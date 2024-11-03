@@ -18,7 +18,11 @@ public class ClientService {
     }
 
     public Optional<ClientDTO> getClientById(int clientId) {
-        return clientRepository.getClientById(clientId);
+        Optional<ClientDTO> client = clientRepository.getClientById(clientId);
+        if (client.isEmpty()) {
+            throw new IllegalArgumentException("No se encontró el cliente con el ID especificado.");
+        }
+        return client;
     }
 
     public ClientDTO saveClient(ClientDTO client) {
@@ -26,9 +30,12 @@ public class ClientService {
     }
 
     public boolean deleteClient(int clientId) {
-        return getClientById(clientId).map(client -> {
+        Optional<ClientDTO> client = getClientById(clientId);
+        if (client.isPresent()) {
             clientRepository.deleteClient(clientId);
             return true;
-        }).orElse(false);
+        } else {
+            throw new IllegalArgumentException("No se encontró el cliente con el ID especificado.");
+        }
     }
 }

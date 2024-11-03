@@ -10,4 +10,5 @@ public interface UserRepository {
     Optional<UserDTO> getUserById(int userId);
     UserDTO saveUser(UserDTO user);
     void deleteUser(int userId);
+    Optional<UserDTO> findByLogin(String login);
 }

@@ -13,22 +13,35 @@ public class SaleDetailService {
     @Autowired
     private SaleDetailRepository saleDetailRepository;
 
+    @Autowired
+    private PetService petService;
+
     public List<SaleDetailDTO> getAllSaleDetails() {
         return saleDetailRepository.getAllSaleDetails();
     }
 
     public Optional<SaleDetailDTO> getSaleDetailById(int saleDetailId) {
-        return saleDetailRepository.getSaleDetailById(saleDetailId);
+        Optional<SaleDetailDTO> saleDetail = saleDetailRepository.getSaleDetailById(saleDetailId);
+        if (saleDetail.isEmpty()) {
+            throw new IllegalArgumentException("No se encontró el detalle de la venta con el ID especificado.");
+        }
+        return saleDetail;
     }
 
     public SaleDetailDTO saveSaleDetail(SaleDetailDTO saleDetail) {
+        if (petService.getPetById(saleDetail.getPetId()).isEmpty()) {
+            throw new IllegalArgumentException("El ID de la mascota no es válido.");
+        }
         return saleDetailRepository.saveSaleDetail(saleDetail);
     }
 
     public boolean deleteSaleDetail(int saleDetailId) {
-        return getSaleDetailById(saleDetailId).map(saleDetail -> {
+        Optional<SaleDetailDTO> saleDetail = getSaleDetailById(saleDetailId);
+        if (saleDetail.isPresent()) {
             saleDetailRepository.deleteSaleDetail(saleDetailId);
             return true;
-        }).orElse(false);
+        } else {
+            throw new IllegalArgumentException("No se encontró el detalle de la venta con el ID especificado.");
+        }
     }
 }

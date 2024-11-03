@@ -31,6 +31,11 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     }
 
     @Override
+    public Optional<CategoryDTO> findByCategory(String category) {
+        return categoryCrudRepository.findByCategory(category).map(categoryMapper::toCategory);
+    }
+
+    @Override
     public CategoryDTO saveCategory(CategoryDTO categoryDTO) {
         CategoryEntity categoryEntity = categoryMapper.toEntity(categoryDTO);
         return categoryMapper.toCategory(categoryCrudRepository.save(categoryEntity));

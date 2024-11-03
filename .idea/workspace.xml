@@ -4,7 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc95c9cc-30eb-4b3f-b069-511759a85fa7" name="Changes" comment="" />
+    <list default="true" id="bc95c9cc-30eb-4b3f-b069-511759a85fa7" name="Changes" comment="Pets :D">
+      <change afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/exceptions/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pets/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/dto/PetDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/dto/PetDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/PetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/PetService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/SaleDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/SaleDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/SaleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/SaleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/ServiceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/ServiceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/CategoryRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/CategoryRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/UserRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/crud/CategoryCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/crud/CategoryCrudRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/crud/UserCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/crud/UserCrudRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/repository/CategoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/repository/CategoryRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/CategoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/CategoryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/ClientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/ClientService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/PetService.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/PetService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/SaleDetailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/SaleDetailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/SaleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/SaleService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/ServiceService.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/ServiceService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/CategoryRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/CategoryRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/UserRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/UserRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/crud/CategoryCrudRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/crud/CategoryCrudRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/crud/UserCrudRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/crud/UserCrudRepository.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,23 +75,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.PetsApplication.executor": "Run",
-    "JUnit.PetsApplicationTests.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/sophmur/Desktop/pets",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.PetsApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PetsApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sophmur/Desktop/pets&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\sophmur\Downloads\pets\pets\src\main\resources" />
@@ -107,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730582480310</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Pets :D">
+      <option name="closed" value="true" />
+      <created>1730584309659</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730584309659</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,6 +194,7 @@
     <MESSAGE value="Creación proyecto" />
     <MESSAGE value="Funciona :D y la prueba con Postman también :D" />
     <MESSAGE value="No sé qué estoy haciendo perd+on Karol" />
-    <option name="LAST_COMMIT_MESSAGE" value="No sé qué estoy haciendo perd+on Karol" />
+    <MESSAGE value="Pets :D" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pets :D" />
   </component>
 </project>

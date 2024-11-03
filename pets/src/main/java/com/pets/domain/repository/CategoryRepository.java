@@ -10,4 +10,5 @@ public interface CategoryRepository {
     Optional<CategoryDTO> getCategoryById(int categoryId);
     CategoryDTO saveCategory(CategoryDTO category);
     void deleteCategory(int categoryId);
+    Optional<CategoryDTO> findByCategory(String category);
 }

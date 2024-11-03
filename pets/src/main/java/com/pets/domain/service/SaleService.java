@@ -13,22 +13,41 @@ public class SaleService {
     @Autowired
     private SaleRepository saleRepository;
 
+    @Autowired
+    private ClientService clientService;
+
+    @Autowired
+    private UserService userService;
+
     public List<SaleDTO> getAllSales() {
         return saleRepository.getAllSales();
     }
 
     public Optional<SaleDTO> getSaleById(int saleId) {
-        return saleRepository.getSaleById(saleId);
+        Optional<SaleDTO> sale = saleRepository.getSaleById(saleId);
+        if (sale.isEmpty()) {
+            throw new IllegalArgumentException("No se encontró la venta con el ID especificado.");
+        }
+        return sale;
     }
 
     public SaleDTO saveSale(SaleDTO sale) {
+        if (userService.getUserById(sale.getUserId()).isEmpty()) {
+            throw new IllegalArgumentException("El ID del usuario no existe.");
+        }
+        if (clientService.getClientById(sale.getClientId()).isEmpty()) {
+            throw new IllegalArgumentException("El ID del cliente no existe.");
+        }
         return saleRepository.saveSale(sale);
     }
 
     public boolean deleteSale(int saleId) {
-        return getSaleById(saleId).map(sale -> {
+        Optional<SaleDTO> sale = getSaleById(saleId);
+        if (sale.isPresent()) {
             saleRepository.deleteSale(saleId);
             return true;
-        }).orElse(false);
+        } else {
+            throw new IllegalArgumentException("No se encontró la venta con el ID especificado.");
+        }
     }
 }

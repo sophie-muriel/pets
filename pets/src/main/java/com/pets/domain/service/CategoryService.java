@@ -22,13 +22,20 @@ public class CategoryService {
     }
 
     public CategoryDTO saveCategory(CategoryDTO category) {
+        Optional<CategoryDTO> existingCategory = categoryRepository.findByCategory(category.getCategory());
+        if (existingCategory.isPresent()) {
+            throw new IllegalArgumentException("El nombre de la categoría debe ser único.");
+        }
         return categoryRepository.saveCategory(category);
     }
 
     public boolean deleteCategory(int categoryId) {
-        return getCategoryById(categoryId).map(category -> {
+        Optional<CategoryDTO> category = getCategoryById(categoryId);
+        if (category.isPresent()) {
             categoryRepository.deleteCategory(categoryId);
             return true;
-        }).orElse(false);
+        } else {
+            throw new IllegalArgumentException("No se encontró la categoría con el ID especificado.");
+        }
     }
 }

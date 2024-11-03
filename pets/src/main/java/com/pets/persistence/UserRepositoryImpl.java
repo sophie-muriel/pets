@@ -31,6 +31,11 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public Optional<UserDTO> findByLogin(String login) {
+        return userCrudRepository.findByLogin(login).map(userMapper::toUser);
+    }
+
+    @Override
     public UserDTO saveUser(UserDTO userDTO) {
         UserEntity userEntity = userMapper.toEntity(userDTO);
         return userMapper.toUser(userCrudRepository.save(userEntity));
