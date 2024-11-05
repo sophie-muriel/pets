@@ -1,7 +1,6 @@
 package com.pets.domain.repository;
 
 import com.pets.domain.dto.UserDTO;
-
 import java.util.List;
 import java.util.Optional;
 

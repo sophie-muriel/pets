@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-02T16:45:42-0500",
+    date = "2024-11-05T00:20:37-0500",
     comments = "version: 1.6.2, compiler: javac, environment: Java 22.0.2 (Amazon.com Inc.)"
 )
 @Component
@@ -22,16 +22,16 @@ public class ServiceMapperImpl implements ServiceMapper {
             return null;
         }
 
-        Integer id = null;
         Integer categoryId = null;
-        String name = null;
         String description = null;
+        Integer id = null;
+        String name = null;
         Double price = null;
 
-        id = entity.getId();
         categoryId = entityCategoryId( entity );
-        name = entity.getName();
         description = entity.getDescription();
+        id = entity.getId();
+        name = entity.getName();
         price = entity.getPrice();
 
         ServiceDTO serviceDTO = new ServiceDTO( id, name, description, price, categoryId );
@@ -48,9 +48,9 @@ public class ServiceMapperImpl implements ServiceMapper {
         ServiceEntity serviceEntity = new ServiceEntity();
 
         serviceEntity.setCategory( serviceDTOToCategoryEntity( dto ) );
+        serviceEntity.setDescription( dto.getDescription() );
         serviceEntity.setId( dto.getId() );
         serviceEntity.setName( dto.getName() );
-        serviceEntity.setDescription( dto.getDescription() );
         serviceEntity.setPrice( dto.getPrice() );
 
         return serviceEntity;

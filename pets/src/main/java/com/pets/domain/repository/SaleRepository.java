@@ -1,7 +1,6 @@
 package com.pets.domain.repository;
 
 import com.pets.domain.dto.SaleDTO;
-
 import java.util.List;
 import java.util.Optional;
 

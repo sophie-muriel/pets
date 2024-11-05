@@ -3,7 +3,6 @@ package com.pets.persistence.crud;
 import com.pets.persistence.entity.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.Optional;
 
 @Repository

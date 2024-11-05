@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-02T16:45:42-0500",
+    date = "2024-11-05T00:20:37-0500",
     comments = "version: 1.6.2, compiler: javac, environment: Java 22.0.2 (Amazon.com Inc.)"
 )
 @Component
@@ -24,21 +24,21 @@ public class SaleMapperImpl implements SaleMapper {
             return null;
         }
 
-        Integer id = null;
         Integer userId = null;
         Integer clientId = null;
-        Double totalPrice = null;
+        Integer id = null;
+        String paymentMethod = null;
         LocalDateTime saleDate = null;
         String status = null;
-        String paymentMethod = null;
+        Double totalPrice = null;
 
-        id = entity.getId();
         userId = entityUserId( entity );
         clientId = entityClientId( entity );
-        totalPrice = entity.getTotalPrice();
+        id = entity.getId();
+        paymentMethod = entity.getPaymentMethod();
         saleDate = entity.getSaleDate();
         status = entity.getStatus();
-        paymentMethod = entity.getPaymentMethod();
+        totalPrice = entity.getTotalPrice();
 
         SaleDTO saleDTO = new SaleDTO( id, userId, clientId, totalPrice, saleDate, status, paymentMethod );
 
@@ -56,10 +56,10 @@ public class SaleMapperImpl implements SaleMapper {
         saleEntity.setUser( saleDTOToUserEntity( dto ) );
         saleEntity.setClient( saleDTOToClientEntity( dto ) );
         saleEntity.setId( dto.getId() );
-        saleEntity.setTotalPrice( dto.getTotalPrice() );
+        saleEntity.setPaymentMethod( dto.getPaymentMethod() );
         saleEntity.setSaleDate( dto.getSaleDate() );
         saleEntity.setStatus( dto.getStatus() );
-        saleEntity.setPaymentMethod( dto.getPaymentMethod() );
+        saleEntity.setTotalPrice( dto.getTotalPrice() );
 
         return saleEntity;
     }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-02T16:45:42-0500",
+    date = "2024-11-05T00:20:37-0500",
     comments = "version: 1.6.2, compiler: javac, environment: Java 22.0.2 (Amazon.com Inc.)"
 )
 @Component
@@ -21,17 +21,17 @@ public class ClientMapperImpl implements ClientMapper {
             return null;
         }
 
+        String address = null;
+        String email = null;
         Integer id = null;
         String name = null;
-        String email = null;
         String phoneNumber = null;
-        String address = null;
 
+        address = entity.getAddress();
+        email = entity.getEmail();
         id = entity.getId();
         name = entity.getName();
-        email = entity.getEmail();
         phoneNumber = entity.getPhoneNumber();
-        address = entity.getAddress();
 
         ClientDTO clientDTO = new ClientDTO( id, name, email, phoneNumber, address );
 
@@ -46,11 +46,11 @@ public class ClientMapperImpl implements ClientMapper {
 
         ClientEntity clientEntity = new ClientEntity();
 
+        clientEntity.setAddress( dto.getAddress() );
+        clientEntity.setEmail( dto.getEmail() );
         clientEntity.setId( dto.getId() );
         clientEntity.setName( dto.getName() );
-        clientEntity.setEmail( dto.getEmail() );
         clientEntity.setPhoneNumber( dto.getPhoneNumber() );
-        clientEntity.setAddress( dto.getAddress() );
 
         return clientEntity;
     }

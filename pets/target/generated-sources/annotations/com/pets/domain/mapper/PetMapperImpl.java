@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-02T16:45:42-0500",
+    date = "2024-11-05T00:20:37-0500",
     comments = "version: 1.6.2, compiler: javac, environment: Java 22.0.2 (Amazon.com Inc.)"
 )
 @Component
@@ -22,23 +22,23 @@ public class PetMapperImpl implements PetMapper {
             return null;
         }
 
-        Integer id = null;
-        String name = null;
         Integer ownerId = null;
-        String species = null;
-        String gender = null;
         Integer age = null;
-        Double weight = null;
+        String gender = null;
+        Integer id = null;
         String medicalHistoryLink = null;
+        String name = null;
+        String species = null;
+        Double weight = null;
 
-        id = entity.getId();
-        name = entity.getName();
         ownerId = entityOwnerId( entity );
-        species = entity.getSpecies();
-        gender = entity.getGender();
         age = entity.getAge();
-        weight = entity.getWeight();
+        gender = entity.getGender();
+        id = entity.getId();
         medicalHistoryLink = entity.getMedicalHistoryLink();
+        name = entity.getName();
+        species = entity.getSpecies();
+        weight = entity.getWeight();
 
         PetDTO petDTO = new PetDTO( id, name, ownerId, species, gender, age, weight, medicalHistoryLink );
 
@@ -54,13 +54,13 @@ public class PetMapperImpl implements PetMapper {
         PetEntity petEntity = new PetEntity();
 
         petEntity.setOwner( petDTOToClientEntity( dto ) );
+        petEntity.setAge( dto.getAge() );
+        petEntity.setGender( dto.getGender() );
         petEntity.setId( dto.getId() );
+        petEntity.setMedicalHistoryLink( dto.getMedicalHistoryLink() );
         petEntity.setName( dto.getName() );
         petEntity.setSpecies( dto.getSpecies() );
-        petEntity.setGender( dto.getGender() );
-        petEntity.setAge( dto.getAge() );
         petEntity.setWeight( dto.getWeight() );
-        petEntity.setMedicalHistoryLink( dto.getMedicalHistoryLink() );
 
         return petEntity;
     }

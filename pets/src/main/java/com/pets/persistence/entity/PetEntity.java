@@ -1,37 +1,57 @@
 package com.pets.persistence.entity;
 
 import jakarta.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "pets")
 public class PetEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String name;
     private String species;
     private String gender;
     private Integer age;
     private Double weight;
 
+    @Column(name = "medical_history_link")
+    private String medicalHistoryLink;
+
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)
     private ClientEntity owner;
 
-    @Column(name = "medical_history_link")
-    private String medicalHistoryLink;
-
     @OneToMany(mappedBy = "pet")
-    private List<SaleDetailEntity> saleDetails;
+    private final List<SaleDetailEntity> saleDetails = new ArrayList<>();
+
+    public Integer getAge() {
+        return age;
+    }
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public Integer getId() {
         return id;
     }
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getMedicalHistoryLink() {
+        return medicalHistoryLink;
+    }
+    public void setMedicalHistoryLink(String medicalHistoryLink) {
+        this.medicalHistoryLink = medicalHistoryLink;
     }
 
     public String getName() {
@@ -48,25 +68,15 @@ public class PetEntity {
         this.owner = owner;
     }
 
+    public List<SaleDetailEntity> getSaleDetails() {
+        return saleDetails;
+    }
+
     public String getSpecies() {
         return species;
     }
     public void setSpecies(String species) {
         this.species = species;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-    public void setAge(Integer age) {
-        this.age = age;
     }
 
     public Double getWeight() {
@@ -75,20 +85,4 @@ public class PetEntity {
     public void setWeight(Double weight) {
         this.weight = weight;
     }
-
-    public String getMedicalHistoryLink() {
-        return medicalHistoryLink;
-    }
-    public void setMedicalHistoryLink(String medicalHistoryLink) {
-        this.medicalHistoryLink = medicalHistoryLink;
-    }
-
-    public List<SaleDetailEntity> getSaleDetails() {
-        return saleDetails;
-    }
-    public void setSaleDetails(List<SaleDetailEntity> saleDetails) {
-        this.saleDetails = saleDetails;
-    }
 }
-
-

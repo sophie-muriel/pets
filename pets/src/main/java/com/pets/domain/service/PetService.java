@@ -32,9 +32,6 @@ public class PetService {
         if (clientService.getClientById(pet.getOwnerId()).isEmpty()) {
             throw new IllegalArgumentException("El ID del cliente no es válido.");
         }
-        if (!"Hembra".equalsIgnoreCase(pet.getGender()) && !"Macho".equalsIgnoreCase(pet.getGender())) {
-            throw new IllegalArgumentException("El género debe ser 'Hembra' o 'Macho'.");
-        }
         return petRepository.savePet(pet);
     }
 

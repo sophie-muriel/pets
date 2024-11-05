@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "sale_detail")
+@Table(name = "sale_details")
 public class SaleDetailEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "scheduled_date", nullable = false)
+    private LocalDateTime scheduledDate;
 
     @ManyToOne
     @JoinColumn(name = "service_id", nullable = false)
@@ -23,21 +25,11 @@ public class SaleDetailEntity {
     @JoinColumn(name = "sale_id", nullable = false)
     private SaleEntity sale;
 
-    @Column(name = "scheduled_date", nullable = false)
-    private LocalDateTime scheduledDate;
-
     public Integer getId() {
         return id;
     }
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public ServiceEntity getService() {
-        return service;
-    }
-    public void setService(ServiceEntity service) {
-        this.service = service;
     }
 
     public PetEntity getPet() {
@@ -59,5 +51,12 @@ public class SaleDetailEntity {
     }
     public void setScheduledDate(LocalDateTime scheduledDate) {
         this.scheduledDate = scheduledDate;
+    }
+
+    public ServiceEntity getService() {
+        return service;
+    }
+    public void setService(ServiceEntity service) {
+        this.service = service;
     }
 }

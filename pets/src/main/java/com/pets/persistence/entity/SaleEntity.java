@@ -2,17 +2,23 @@ package com.pets.persistence.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "sale")
+@Table(name = "sales")
 public class SaleEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private Double totalPrice;
+    private String status;
+
+    @Column(name = "sale_date", nullable = false)
+    private LocalDateTime saleDate;
+
+    @Column(name = "payment_method")
+    private String paymentMethod;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -22,31 +28,8 @@ public class SaleEntity {
     @JoinColumn(name = "client_id", nullable = false)
     private ClientEntity client;
 
-    @Column(name = "sale_date", nullable = false)
-    private LocalDateTime saleDate;
-
-    @Column(name = "status", nullable = false)
-    private String status;
-
-    @Column(name = "payment_method")
-    private String paymentMethod;
-
     @OneToMany(mappedBy = "sale")
-    private List<SaleDetailEntity> saleDetails;
-
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public UserEntity getUser() {
-        return user;
-    }
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
+    private final List<SaleDetailEntity> saleDetails = new ArrayList<>();
 
     public ClientEntity getClient() {
         return client;
@@ -55,25 +38,11 @@ public class SaleEntity {
         this.client = client;
     }
 
-    public Double getTotalPrice() {
-        return totalPrice;
+    public Integer getId() {
+        return id;
     }
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public LocalDateTime getSaleDate() {
-        return saleDate;
-    }
-    public void setSaleDate(LocalDateTime saleDate) {
-        this.saleDate = saleDate;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-    public void setStatus(String status) {
-        this.status = status;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getPaymentMethod() {
@@ -83,10 +52,35 @@ public class SaleEntity {
         this.paymentMethod = paymentMethod;
     }
 
+    public LocalDateTime getSaleDate() {
+        return saleDate;
+    }
+    public void setSaleDate(LocalDateTime saleDate) {
+        this.saleDate = saleDate;
+    }
+
     public List<SaleDetailEntity> getSaleDetails() {
         return saleDetails;
     }
-    public void setSaleDetails(List<SaleDetailEntity> saleDetails) {
-        this.saleDetails = saleDetails;
+
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 }
