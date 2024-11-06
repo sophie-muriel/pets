@@ -1,6 +1,7 @@
 package com.pets.domain.service;
 
 import com.pets.domain.dto.CategoryDTO;
+import com.pets.domain.dto.ClientDTO;
 import com.pets.domain.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,13 +19,17 @@ public class CategoryService {
     }
 
     public Optional<CategoryDTO> getCategoryById(int categoryId) {
-        return categoryRepository.getCategoryById(categoryId);
+        Optional<CategoryDTO> category = categoryRepository.getCategoryById(categoryId);
+        if (category.isEmpty()) {
+            throw new IllegalArgumentException("category not found");
+        }
+        return category;
     }
 
     public CategoryDTO saveCategory(CategoryDTO category) {
         Optional<CategoryDTO> existingCategory = categoryRepository.findByCategory(category.getCategory());
         if (existingCategory.isPresent()) {
-            throw new IllegalArgumentException("El nombre de la categoría debe ser único.");
+            throw new IllegalArgumentException("category already exists");
         }
         return categoryRepository.saveCategory(category);
     }
@@ -35,7 +40,7 @@ public class CategoryService {
             categoryRepository.deleteCategory(categoryId);
             return true;
         } else {
-            throw new IllegalArgumentException("No se encontró la categoría con el ID especificado.");
+            throw new IllegalArgumentException("category not found");
         }
     }
 }

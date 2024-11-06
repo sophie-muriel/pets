@@ -26,17 +26,17 @@ public class SaleService {
     public Optional<SaleDTO> getSaleById(int saleId) {
         Optional<SaleDTO> sale = saleRepository.getSaleById(saleId);
         if (sale.isEmpty()) {
-            throw new IllegalArgumentException("No se encontró la venta con el ID especificado.");
+            throw new IllegalArgumentException("sale not found");
         }
         return sale;
     }
 
     public SaleDTO saveSale(SaleDTO sale) {
         if (userService.getUserById(sale.getUserId()).isEmpty()) {
-            throw new IllegalArgumentException("El ID del usuario no existe.");
+            throw new IllegalArgumentException("user not found");
         }
         if (clientService.getClientById(sale.getClientId()).isEmpty()) {
-            throw new IllegalArgumentException("El ID del cliente no existe.");
+            throw new IllegalArgumentException("client not found");
         }
         return saleRepository.saveSale(sale);
     }
@@ -47,7 +47,7 @@ public class SaleService {
             saleRepository.deleteSale(saleId);
             return true;
         } else {
-            throw new IllegalArgumentException("No se encontró la venta con el ID especificado.");
+            throw new IllegalArgumentException("sale not found");
         }
     }
 }

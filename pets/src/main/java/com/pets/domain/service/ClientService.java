@@ -20,7 +20,7 @@ public class ClientService {
     public Optional<ClientDTO> getClientById(int clientId) {
         Optional<ClientDTO> client = clientRepository.getClientById(clientId);
         if (client.isEmpty()) {
-            throw new IllegalArgumentException("No se encontró el cliente con el ID especificado.");
+            throw new IllegalArgumentException("client not found");
         }
         return client;
     }
@@ -35,7 +35,7 @@ public class ClientService {
             clientRepository.deleteClient(clientId);
             return true;
         } else {
-            throw new IllegalArgumentException("No se encontró el cliente con el ID especificado.");
+            throw new IllegalArgumentException("client not found");
         }
     }
 }

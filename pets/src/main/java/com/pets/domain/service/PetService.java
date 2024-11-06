@@ -23,14 +23,14 @@ public class PetService {
     public Optional<PetDTO> getPetById(int petId) {
         Optional<PetDTO> pet = petRepository.getPetById(petId);
         if (pet.isEmpty()) {
-            throw new IllegalArgumentException("No se encontró la mascota con el ID especificado.");
+            throw new IllegalArgumentException("pet not found");
         }
         return pet;
     }
 
     public PetDTO savePet(PetDTO pet) {
         if (clientService.getClientById(pet.getOwnerId()).isEmpty()) {
-            throw new IllegalArgumentException("El ID del cliente no es válido.");
+            throw new IllegalArgumentException("client not found");
         }
         return petRepository.savePet(pet);
     }
@@ -41,7 +41,7 @@ public class PetService {
             petRepository.deletePet(petId);
             return true;
         } else {
-            throw new IllegalArgumentException("No se encontró la mascota con el ID especificado.");
+            throw new IllegalArgumentException("pet not found");
         }
     }
 }

@@ -20,14 +20,25 @@ public class UserService {
     public Optional<UserDTO> getUserById(int userId) {
         Optional<UserDTO> user = userRepository.getUserById(userId);
         if (user.isEmpty()) {
-            throw new IllegalArgumentException("No se encontró el usuario con el ID especificado.");
+            throw new IllegalArgumentException("user not found");
         }
         return user;
     }
 
+    public boolean login(String login, String password) {
+        Optional<UserDTO> temp = userRepository.findByLogin(login);
+        if (temp.isPresent()) {
+            UserDTO user = temp.get();
+            if (user.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        throw new IllegalArgumentException("invalid credentials");
+    }
+
     public UserDTO saveUser(UserDTO user) {
         if (userRepository.findByLogin(user.getLogin()).isPresent()) {
-            throw new IllegalArgumentException("El login ya está en uso.");
+            throw new IllegalArgumentException("login in use");
         }
         return userRepository.saveUser(user);
     }
@@ -38,7 +49,7 @@ public class UserService {
             userRepository.deleteUser(userId);
             return true;
         } else {
-            throw new IllegalArgumentException("No se encontró el usuario con el ID especificado.");
+            throw new IllegalArgumentException("user not found");
         }
     }
 }

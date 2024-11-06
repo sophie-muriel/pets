@@ -1,5 +1,6 @@
 package com.pets.web.controller;
 
+import com.pets.domain.dto.LoginRequestDTO;
 import com.pets.domain.dto.UserDTO;
 import com.pets.domain.service.UserService;
 import jakarta.validation.Valid;
@@ -39,6 +40,20 @@ public class UserController {
     public ResponseEntity<UserDTO> save(@Valid @RequestBody UserDTO userDTO) {
         UserDTO savedUser = userService.saveUser(userDTO);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody LoginRequestDTO loginRequest) {
+        try {
+            boolean success = userService.login(loginRequest.getLogin(), loginRequest.getPassword());
+            if (success) {
+                return new ResponseEntity<>("login successful", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("invalid credentials", HttpStatus.UNAUTHORIZED);
+            }
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
+        }
     }
 
     @PutMapping("/edit/{id}")

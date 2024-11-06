@@ -23,14 +23,14 @@ public class SaleDetailService {
     public Optional<SaleDetailDTO> getSaleDetailById(int saleDetailId) {
         Optional<SaleDetailDTO> saleDetail = saleDetailRepository.getSaleDetailById(saleDetailId);
         if (saleDetail.isEmpty()) {
-            throw new IllegalArgumentException("No se encontró el detalle de la venta con el ID especificado.");
+            throw new IllegalArgumentException("sale detail not found");
         }
         return saleDetail;
     }
 
     public SaleDetailDTO saveSaleDetail(SaleDetailDTO saleDetail) {
         if (petService.getPetById(saleDetail.getPetId()).isEmpty()) {
-            throw new IllegalArgumentException("El ID de la mascota no es válido.");
+            throw new IllegalArgumentException("pet not found");
         }
         return saleDetailRepository.saveSaleDetail(saleDetail);
     }
@@ -41,7 +41,7 @@ public class SaleDetailService {
             saleDetailRepository.deleteSaleDetail(saleDetailId);
             return true;
         } else {
-            throw new IllegalArgumentException("No se encontró el detalle de la venta con el ID especificado.");
+            throw new IllegalArgumentException("sale detail not found");
         }
     }
 }

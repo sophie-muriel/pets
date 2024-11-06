@@ -23,14 +23,14 @@ public class ServiceService {
     public Optional<ServiceDTO> getServiceById(int serviceId) {
         Optional<ServiceDTO> service = serviceRepository.getServiceById(serviceId);
         if (service.isEmpty()) {
-            throw new IllegalArgumentException("No se encontró el servicio con el ID especificado.");
+            throw new IllegalArgumentException("service not found");
         }
         return service;
     }
 
     public ServiceDTO saveService(ServiceDTO service) {
         if (categoryService.getCategoryById(service.getCategoryId()).isEmpty()) {
-            throw new IllegalArgumentException("El ID de la categoría no existe.");
+            throw new IllegalArgumentException("category not found");
         }
         return serviceRepository.saveService(service);
     }
@@ -41,7 +41,7 @@ public class ServiceService {
             serviceRepository.deleteService(serviceId);
             return true;
         } else {
-            throw new IllegalArgumentException("No se encontró el servicio con el ID especificado.");
+            throw new IllegalArgumentException("service not found");
         }
     }
 }
