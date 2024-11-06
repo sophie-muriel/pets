@@ -1,33 +1,30 @@
 package com.pets.domain.dto;
 
 import jakarta.validation.constraints.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class SaleDTO {
     private Integer id;
-    @NotNull(message = "Error: ID del usuario vacío")
-    @Positive(message = "Error: ID del usuario inválido")
+
+    @NotNull @Positive
     private Integer userId;
 
-    @NotNull(message = "Error: ID del cliente vacío")
-    @Positive(message = "Error: ID del cliente inválido")
+    @NotNull @Positive
     private Integer clientId;
 
-    @Positive(message = "Error: precio inválido")
+    @Positive
     private Double totalPrice;
 
-    @NotNull(message = "Error: fecha de venta no puede estar vacía")
-    private LocalDateTime saleDate;
+    @NotNull
+    private LocalDate saleDate;
 
-    @NotBlank(message = "Error: estado no puede estar vacío")
-    @Pattern(regexp = "^(Completada|Pendiente|Cancelada)$", message = "Error: estado debe ser 'Completada', 'Pendiente' o 'Cancelada'")
+    @NotBlank @Pattern(regexp = "^(Completed|Pending|Cancelled)$", message = "Completed, Pending, or Cancelled only")
     private String status;
 
-    @NotBlank(message = "Error: método de pago no puede estar vacío")
-    @Pattern(regexp = "^(Efectivo|Tarjeta|Transferencia)$", message = "Error: método de pago debe ser 'Efectivo', 'Tarjeta' o 'Transferencia'")
+    @NotBlank @Pattern(regexp = "^(Cash|Card|Transfer)$", message = "Cash, Card, or Transfer only")
     private String paymentMethod;
 
-    public SaleDTO(Integer id, Integer userId, Integer clientId, Double totalPrice, LocalDateTime saleDate, String status, String paymentMethod) {
+    public SaleDTO(Integer id, Integer userId, Integer clientId, Double totalPrice, LocalDate saleDate, String status, String paymentMethod) {
         this.id = id;
         this.userId = userId;
         this.clientId = clientId;
@@ -58,10 +55,10 @@ public class SaleDTO {
         this.paymentMethod = paymentMethod;
     }
 
-    public LocalDateTime getSaleDate() {
+    public LocalDate getSaleDate() {
         return saleDate;
     }
-    public void setSaleDate(LocalDateTime saleDate) {
+    public void setSaleDate(LocalDate saleDate) {
         this.saleDate = saleDate;
     }
 

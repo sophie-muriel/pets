@@ -1,24 +1,21 @@
 package com.pets.domain.dto;
 
 import jakarta.validation.constraints.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class SaleDetailDTO {
     private Integer id;
 
-    @NotNull(message = "Error: ID del servicio vacío")
-    @Positive(message = "Error: ID del servicio inválido")
+    @NotNull @Positive
     private Integer serviceId;
 
-    @NotNull(message = "Error: ID de la mascota vacío")
-    @Positive(message = "Error: ID de la mascota inválido")
+    @NotNull @Positive
     private Integer petId;
 
-    @NotNull(message = "Error: fecha programada vacía")
-    @Future(message = "Error: fecha inválida")
-    private LocalDateTime scheduledDate;
+    @NotNull @Future
+    private LocalDate scheduledDate;
 
-    public SaleDetailDTO(Integer id, Integer serviceId, Integer petId, LocalDateTime scheduledDate) {
+    public SaleDetailDTO(Integer id, Integer serviceId, Integer petId, LocalDate scheduledDate) {
         this.id = id;
         this.serviceId = serviceId;
         this.petId = petId;
@@ -39,10 +36,10 @@ public class SaleDetailDTO {
         this.petId = petId;
     }
 
-    public LocalDateTime getScheduledDate() {
+    public LocalDate getScheduledDate() {
         return scheduledDate;
     }
-    public void setScheduledDate(LocalDateTime scheduledDate) {
+    public void setScheduledDate(LocalDate scheduledDate) {
         this.scheduledDate = scheduledDate;
     }
 

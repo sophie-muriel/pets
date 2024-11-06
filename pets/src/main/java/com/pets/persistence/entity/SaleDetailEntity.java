@@ -1,7 +1,7 @@
 package com.pets.persistence.entity;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "sale_details")
@@ -11,7 +11,7 @@ public class SaleDetailEntity {
     private Integer id;
 
     @Column(name = "scheduled_date", nullable = false)
-    private LocalDateTime scheduledDate;
+    private LocalDate scheduledDate;
 
     @ManyToOne
     @JoinColumn(name = "service_id", nullable = false)
@@ -46,10 +46,10 @@ public class SaleDetailEntity {
         this.sale = sale;
     }
 
-    public LocalDateTime getScheduledDate() {
+    public LocalDate getScheduledDate() {
         return scheduledDate;
     }
-    public void setScheduledDate(LocalDateTime scheduledDate) {
+    public void setScheduledDate(LocalDate scheduledDate) {
         this.scheduledDate = scheduledDate;
     }
 

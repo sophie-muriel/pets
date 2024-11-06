@@ -5,8 +5,7 @@ import jakarta.validation.constraints.*;
 public class CategoryDTO {
     private Integer id;
 
-    @NotBlank(message = "Error: categoría vacía")
-    @Size(max = 100, message = "Error: categoría con más de 100 caracteres")
+    @NotBlank @Size(max = 100)
     private String category;
 
     public CategoryDTO(String category, Integer id) {

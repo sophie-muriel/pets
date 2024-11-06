@@ -5,33 +5,25 @@ import jakarta.validation.constraints.*;
 public class PetDTO {
     private Integer id;
 
-    @NotBlank(message = "Error: nombre vacío")
-    @Size(max = 100, message = "Error: nombre con más de 100 caracteres")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Error: nombre inválido")
+    @NotBlank @Size(max = 100) @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "invalid format")
     private String name;
 
-    @NotNull(message = "Error: ID del dueño vacío")
-    @Positive(message = "Error: ID del dueño inválido")
+    @NotNull @Positive
     private Integer ownerId;
 
-    @NotBlank(message = "Error: especie vacía")
-    @Size(max = 50, message = "Error: especie con más de 50 caracteres")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Error: especie inválida")
+    @NotBlank @Size(max = 50) @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "invalid format")
     private String species;
 
-    @NotBlank(message = "Error: género vacío")
-    @Pattern(regexp = "^(Hembra|Macho)$", message = "Error: género debe ser 'Hembra' o 'Macho'")
+    @NotBlank @Pattern(regexp = "^(Male|Female)$", message = "Male or Female only")
     private String gender;
 
-    @NotNull(message = "Error: edad vacía")
-    @Positive(message = "Error: edad inválida")
+    @NotNull @Positive
     private Integer age;
 
-    @NotNull(message = "Error: peso vacío")
-    @Positive(message = "Error: peso inválido")
+    @NotNull @Positive
     private Double weight;
 
-    @Size(max = 150, message = "Error: enlace del historial médico con más de 150 caracteres")
+    @Size(max = 150)
     private String medicalHistoryLink;
 
     public PetDTO(Integer id, String name, Integer ownerId, String species, String gender, Integer age, Double weight, String medicalHistoryLink) {

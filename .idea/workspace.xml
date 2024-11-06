@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc95c9cc-30eb-4b3f-b069-511759a85fa7" name="Changes" comment="Validaciones y demás.">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="bc95c9cc-30eb-4b3f-b069-511759a85fa7" name="Changes" comment="Validaciones. Parte 2. Última parte. (Espero).">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pets/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/dto/CategoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/dto/CategoryDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/dto/ClientDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/dto/ClientDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/dto/PetDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/dto/PetDTO.java" afterDir="false" />
@@ -16,33 +13,16 @@
       <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/dto/SaleDetailDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/dto/SaleDetailDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/dto/ServiceDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/dto/ServiceDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/mapper/CategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/mapper/CategoryMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/mapper/ClientMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/mapper/ClientMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/mapper/PetMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/mapper/PetMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/mapper/SaleDetailMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/mapper/SaleDetailMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/mapper/SaleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/mapper/SaleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/mapper/ServiceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/mapper/ServiceMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/CategoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/ClientRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/PetRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/PetRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/SaleDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/SaleDetailRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/SaleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/SaleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/ServiceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/ServiceRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/PetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/PetService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/crud/CategoryCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/crud/CategoryCrudRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/crud/UserCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/crud/UserCrudRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/entity/CategoryEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/entity/CategoryEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/entity/ClientEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/entity/ClientEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/entity/PetEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/entity/PetEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/exceptions/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/exceptions/GlobalExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/entity/SaleDetailEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/entity/SaleDetailEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/entity/SaleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/entity/SaleEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/entity/ServiceEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/entity/ServiceEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/persistence/entity/UserEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/ClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/PetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/PetsApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/SaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/SaleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/SaleDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/SaleDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/ServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/ServiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/dto/CategoryDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/dto/CategoryDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/dto/ClientDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/dto/ClientDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/dto/PetDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/dto/PetDTO.class" afterDir="false" />
@@ -50,42 +30,16 @@
       <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/dto/SaleDetailDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/dto/SaleDetailDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/dto/ServiceDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/dto/ServiceDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/dto/UserDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/mapper/CategoryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/mapper/CategoryMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/mapper/ClientMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/mapper/ClientMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/mapper/PetMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/mapper/SaleDetailMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/mapper/SaleMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/mapper/ServiceMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/mapper/ServiceMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/mapper/UserMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/CategoryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/ClientService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/PetService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/SaleDetailService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/SaleService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/ServiceService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/exceptions/GlobalExceptionHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/entity/CategoryEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/entity/CategoryEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/entity/ClientEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/entity/ClientEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/entity/PetEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/entity/PetEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/exceptions/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/exceptions/GlobalExceptionHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/entity/SaleDetailEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/entity/SaleDetailEntity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/entity/SaleEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/entity/SaleEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/entity/ServiceEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/entity/ServiceEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/entity/UserEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/persistence/entity/UserEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/CategoryController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/ClientController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/PetController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/SaleController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/SaleDetailController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/ServiceController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/UserController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/CategoryMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/CategoryMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/ClientMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/ClientMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/PetMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/PetMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/SaleDetailMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/SaleDetailMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/SaleMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/SaleMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/ServiceMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/ServiceMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/UserMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/CategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/CategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/ClientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/ClientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/PetController.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/PetController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/SaleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/SaleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/SaleDetailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/SaleDetailController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/ServiceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/ServiceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/UserController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +167,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730666610667</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Validaciones. Parte 2. Última parte. (Espero).">
+      <option name="closed" value="true" />
+      <created>1730787844204</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1730787844204</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -263,6 +225,7 @@
     <MESSAGE value="No sé qué estoy haciendo perd+on Karol" />
     <MESSAGE value="Pets :D" />
     <MESSAGE value="Validaciones y demás." />
-    <option name="LAST_COMMIT_MESSAGE" value="Validaciones y demás." />
+    <MESSAGE value="Validaciones. Parte 2. Última parte. (Espero)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Validaciones. Parte 2. Última parte. (Espero)." />
   </component>
 </project>

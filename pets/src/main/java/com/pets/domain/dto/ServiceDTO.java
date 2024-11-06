@@ -5,19 +5,16 @@ import jakarta.validation.constraints.*;
 public class ServiceDTO {
     private Integer id;
 
-    @NotBlank(message = "Error: nombre vacío")
-    @Size(max = 100, message = "Error: nombre con más de 100 caracteres")
+    @NotBlank @Size(max = 100)
     private String name;
 
-    @Size(max = 255, message = "Error: descripción con más de 255 caracteres")
+    @Size(max = 255)
     private String description;
 
-    @NotNull(message = "Error: precio vacío")
-    @Positive(message = "Error: precio inválido")
+    @NotNull @Positive
     private Double price;
 
-    @NotNull(message = "Error: ID de categoría vacío")
-    @Positive(message = "Error: ID de categoría inválido")
+    @NotNull @Positive
     private Integer categoryId;
 
     public ServiceDTO(Integer id, String name, String description, Double price, Integer categoryId) {

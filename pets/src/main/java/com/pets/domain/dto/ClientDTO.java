@@ -5,21 +5,16 @@ import jakarta.validation.constraints.*;
 public class ClientDTO {
     private Integer id;
 
-    @NotBlank(message = "Error: nombre vacío")
-    @Size(max = 100, message = "Error: nombre con más de 100 caracteres")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Error: nombre inválido")
+    @NotBlank @Size(max = 100) @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "invalid format")
     private String name;
 
-    @NotBlank(message = "Error: email vacío")
-    @Email(message = "Error: email inválido")
-    @Size(max = 100, message = "Error: email con más de 100 caracteres")
+    @NotBlank @Email @Size(max = 100)
     private String email;
 
-    @Pattern(regexp = "^\\d{0,10}$", message = "Error: número de teléfono inválido")
+    @Pattern(regexp = "^\\d{0,10}$", message = "invalid format")
     private String phoneNumber;
 
-    @NotBlank(message = "Error: dirección vacía")
-    @Size(max = 255, message = "Error: dirección con más de 255 caracteres")
+    @NotBlank @Size(max = 255)
     private String address;
 
     public ClientDTO(Integer id, String name, String email, String phoneNumber, String address) {

@@ -1,7 +1,7 @@
 package com.pets.persistence.entity;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class SaleEntity {
     private String status;
 
     @Column(name = "sale_date", nullable = false)
-    private LocalDateTime saleDate;
+    private LocalDate saleDate;
 
     @Column(name = "payment_method")
     private String paymentMethod;
@@ -52,10 +52,10 @@ public class SaleEntity {
         this.paymentMethod = paymentMethod;
     }
 
-    public LocalDateTime getSaleDate() {
+    public LocalDate getSaleDate() {
         return saleDate;
     }
-    public void setSaleDate(LocalDateTime saleDate) {
+    public void setSaleDate(LocalDate saleDate) {
         this.saleDate = saleDate;
     }
 

@@ -5,30 +5,22 @@ import jakarta.validation.constraints.*;
 public class UserDTO {
     private Integer id;
 
-    @NotBlank(message = "Error: login vacío")
-    @Size(max = 50, message = "Error: login con más de 50 caracteres")
+    @NotBlank @Size(max = 50)
     private String login;
 
-    @NotBlank(message = "Error: contraseña vacía")
-    @Size(max = 50, message = "Error: contraseña con más de 50 caracteres")
+    @NotBlank @Size(max = 50)
     private String password;
 
-    @NotBlank(message = "Error: nombre vacío")
-    @Size(max = 100, message = "Error: nombre con más de 100 caracteres")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "Error: nombre inválido")
+    @NotBlank @Size(max = 100) @Pattern(regexp = "^[a-zA-Z\\s]+$")
     private String name;
 
-    @NotBlank(message = "Error: email vacío")
-    @Email(message = "Error: email inválido")
-    @Size(max = 100, message = "Error: email con más de 100 caracteres")
+    @NotBlank @Email @Size(max = 100)
     private String email;
 
-    @Size(max = 10, message = "Error: número de teléfono con más de 10 caracteres")
-    @Pattern(regexp = "^[0-9]*$", message = "Error: número de teléfono inválido")
+    @Size(max = 10) @Pattern(regexp = "^[0-9]*$")
     private String phoneNumber;
 
-    @NotBlank(message = "Error: rol vacío")
-    @Pattern(regexp = "^(Empleado|Administrador|Estilista)$", message = "Error: rol debe ser 'Empleado', 'Administrador' o 'Estilista'")
+    @NotBlank @Pattern(regexp = "^(Employee|Admin|Stylist)$", message = "Employee, Admin, or Stylist only")
     private String role;
 
     public UserDTO(Integer id, String login, String password, String name, String email, String phoneNumber, String role) {
