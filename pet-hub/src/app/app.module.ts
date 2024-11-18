@@ -18,6 +18,7 @@ import { ClientsComponent } from './components/account/dashboard/clients/clients
 import { PetsComponent } from './components/account/dashboard/pets/pets.component';
 import { SalesComponent } from './components/account/dashboard/sales/sales.component';
 import { ScrollService } from './services/scroll.service';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ScrollService } from './services/scroll.service';
     ClientsComponent,
     PetsComponent,
     SalesComponent,
+    ContactComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,],
   providers: [],

@@ -13,6 +13,7 @@ import { CategoriesComponent } from './components/account/dashboard/categories/c
 import { ClientsComponent } from './components/account/dashboard/clients/clients.component';
 import { PetsComponent } from './components/account/dashboard/pets/pets.component';
 import { SalesComponent } from './components/account/dashboard/sales/sales.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
     ],
   },
   { path: 'services', component: ServicesComponent },
+  { path: 'contact', component: ContactComponent}
 ];
 
 @NgModule({
