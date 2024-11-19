@@ -35,8 +35,15 @@
         class="rounded-md px-4 py-2 text-sm font-bold hover:text-secondary-orange">About</a>
       <a routerLink="/contact" routerLinkActive="bg-primary-100 text-black"
         class="rounded-md px-4 py-2 text-sm font-bold hover:text-secondary-orange">Contact</a>
-      <a routerLink="/login" routerLinkActive="bg-primary-100 text-black"
+      <a *ngIf="!isLoggedIn" routerLink="/login"
+        routerLinkActive="bg-primary-100 text-black"
         class="rounded-md px-4 py-2 text-sm font-bold hover:text-secondary-orange">Login</a>
+      <a *ngIf="isLoggedIn" routerLink="/account"
+        routerLinkActive="bg-primary-100 text-black"
+        class="rounded-md px-4 py-2 text-sm font-bold hover:text-secondary-orange">Account</a>
+      <a href="" class="mr-6 py-1 text-drak-gray hover:text-secondary-orange" *ngIf="isLoggedIn" (click)="logout()">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g data-name="Layer 2"><g data-name="Layer 1 copy 6"><path d="M256 0C114.62 0 0 114.62 0 256s114.62 256 256 256 256-114.62 256-256S397.38 0 256 0zm3.3 381.6h-55.86a65.21 65.21 0 0 1-65.21-65.21V195.61a65.21 65.21 0 0 1 65.21-65.21h55.86a20.26 20.26 0 0 1 20.25 20.26 20.26 20.26 0 0 1-20.25 20.26h-55.86a24.69 24.69 0 0 0-24.7 24.69v120.78a24.69 24.69 0 0 0 24.7 24.69h55.86a20.26 20.26 0 0 1 0 40.52zm138.25-111.2-49.84 49.83a20.26 20.26 0 0 1-28.65-28.64l14.6-14.6H246.8a20.26 20.26 0 1 1 0-40.51H335l-16.06-16.07a20.26 20.26 0 0 1 28.65-28.64l50 50a20.26 20.26 0 0 1-.04 28.63z" data-name="57" fill="currentColor" opacity="1" data-original="#000000" class=""></path></g></g></g></svg>
+      </a>
     </div>
   </nav>
 </header>

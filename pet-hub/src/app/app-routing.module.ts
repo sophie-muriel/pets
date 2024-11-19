@@ -33,15 +33,14 @@ const routes: Routes = [
       { path: 'sales', component: SalesComponent },
     ],
   },
-  { path: 'services', component: ServicesComponent },
-  { path: 'contact', component: ContactComponent}
+  { path: 'contact', component: ContactComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    scrollPositionRestoration: 'enabled',
-  }),
-],
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
