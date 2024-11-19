@@ -9,11 +9,15 @@ import { tap } from 'rxjs/operators';
 })
 export class AuthService {
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  private currentUserSubject = new BehaviorSubject<any>(null);
 
   constructor(private http: HttpClient, private router: Router) {
     const storedLoginState = localStorage.getItem('isLoggedIn');
-    if (storedLoginState === 'true') {
+    const storedUserData = localStorage.getItem('currentUser');
+
+    if (storedLoginState === 'true' && storedUserData) {
       this.isLoggedInSubject.next(true);
+      this.currentUserSubject.next(JSON.parse(storedUserData));
     }
   }
 
@@ -25,6 +29,9 @@ export class AuthService {
           if (response.status === 'success') {
             this.isLoggedInSubject.next(true);
             localStorage.setItem('isLoggedIn', 'true');
+
+            this.currentUserSubject.next(response.data);
+            localStorage.setItem('currentUser', JSON.stringify(response.data));
           }
         })
       );
@@ -32,11 +39,17 @@ export class AuthService {
 
   logout() {
     this.isLoggedInSubject.next(false);
+    this.currentUserSubject.next(null);
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('currentUser');
     this.router.navigate(['/']);
   }
 
   isLoggedIn() {
     return this.isLoggedInSubject.asObservable();
+  }
+
+  getCurrentUser() {
+    return this.currentUserSubject.asObservable();
   }
 }

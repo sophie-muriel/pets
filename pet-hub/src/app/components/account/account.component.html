@@ -1,1 +1,71 @@
-<p>account works!</p>
+<div
+  class="relative min-h-screen w-full overflow-hidden flex flex-col items-center">
+  <!-- Welcome Section -->
+  <div class="w-full mt-10 py-8 text-center text-black">
+    <h1 class="text-3xl font-bold">
+      Welcome, <span class="text-primary-blue">{{ user.name }}</span>
+    </h1>
+    <p class="mt-2 text-md">Manage your account and access the dashboard</p>
+  </div>
+
+  <!-- Edit Information Button -->
+  <div class="max-w-4xl w-full px-6 lg:px-8">
+
+    <div class="flex justify-between items-center">
+      <div>
+        <ul class="mt-4 space-y-2 text-gray-600">
+          <li><strong>Name:</strong> {{ user.name }}</li>
+          <li><strong>Email:</strong> {{ user.email }}</li>
+          <li><strong>Phone:</strong> {{ user.phoneNumber || 'N/A' }}</li>
+          <li><strong>Role:</strong> {{ user.role }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Section (Table of Entities) -->
+  <div class="mt-10 max-w-4xl w-full px-6 lg:px-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Dashboard</h2>
+
+    <!-- Table for Entities -->
+    <div class="overflow-x-auto">
+      <table class="min-w-full mb-20 bg-white shadow-md rounded-lg">
+        <tbody>
+          <tr *ngFor="let entity of entities" class="border-b">
+            <td class="py-4 px-6 text-gray-800">{{ entity.label }}</td>
+            <td class="py-4 px-6">
+              <button
+                class="bg-primary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue">
+                Save
+              </button>
+            </td>
+            <td class="py-4 px-6">
+              <button
+                class="bg-primary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue">
+                Edit
+              </button>
+            </td>
+            <td class="py-4 px-6">
+              <button
+                class="bg-primary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue">
+                Search
+              </button>
+            </td>
+            <td class="py-4 px-6">
+              <button
+                class="bg-primary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue">
+                Delete
+              </button>
+            </td>
+            <td class="py-4 px-6">
+              <button
+                class="bg-primary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue">
+                See All
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
