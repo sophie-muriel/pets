@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -19,45 +21,81 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<CategoryDTO>> getAll() {
+    public ResponseEntity<Map<String, Object>> getAll() {
         List<CategoryDTO> categories = categoryService.getAllCategories();
+        Map<String, Object> response = new HashMap<>();
+
         if (categories.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            response.put("status", "error");
+            response.put("message", "No categories found");
+            return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(categories, HttpStatus.OK);
+
+        response.put("status", "success");
+        response.put("data", categories);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CategoryDTO> getCategory(@PathVariable("id") int categoryId) {
+    public ResponseEntity<Map<String, Object>> getCategory(@PathVariable("id") int categoryId) {
+        Map<String, Object> response = new HashMap<>();
         Optional<CategoryDTO> category = categoryService.getCategoryById(categoryId);
-        return category.map(categoryDTO
-                -> new ResponseEntity<>(categoryDTO, HttpStatus.OK)).orElseGet(()
-                -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+
+        if (category.isPresent()) {
+            response.put("status", "success");
+            response.put("data", category.get());
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } else {
+            response.put("status", "error");
+            response.put("message", "Category not found");
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("/save")
-    public ResponseEntity<CategoryDTO> save(@Valid @RequestBody CategoryDTO categoryDTO) {
+    public ResponseEntity<Map<String, Object>> save(@Valid @RequestBody CategoryDTO categoryDTO) {
+        Map<String, Object> response = new HashMap<>();
         CategoryDTO savedCategory = categoryService.saveCategory(categoryDTO);
-        return new ResponseEntity<>(savedCategory, HttpStatus.CREATED);
+
+        response.put("status", "success");
+        response.put("message", "Category created successfully");
+        response.put("data", savedCategory);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<CategoryDTO> edit(@PathVariable("id") int categoryId, @Valid @RequestBody CategoryDTO categoryDTO) {
+    public ResponseEntity<Map<String, Object>> edit(@PathVariable("id") int categoryId, @Valid @RequestBody CategoryDTO categoryDTO) {
+        Map<String, Object> response = new HashMap<>();
         Optional<CategoryDTO> existingCategory = categoryService.getCategoryById(categoryId);
+
         if (existingCategory.isPresent()) {
             categoryDTO.setId(categoryId);
             CategoryDTO updatedCategory = categoryService.saveCategory(categoryDTO);
-            return new ResponseEntity<>(updatedCategory, HttpStatus.OK);
+
+            response.put("status", "success");
+            response.put("message", "Category updated successfully");
+            response.put("data", updatedCategory);
+            return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        response.put("status", "error");
+        response.put("message", "Category not found");
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> delete(@PathVariable("id") int categoryId) {
+    public ResponseEntity<Map<String, Object>> delete(@PathVariable("id") int categoryId) {
+        Map<String, Object> response = new HashMap<>();
         boolean deleted = categoryService.deleteCategory(categoryId);
+
         if (deleted) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            response.put("status", "success");
+            response.put("message", "Category deleted successfully");
+            return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        response.put("status", "error");
+        response.put("message", "Category not found");
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 }

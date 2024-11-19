@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -19,45 +21,81 @@ public class SaleDetailController {
     private SaleDetailService saleDetailService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<SaleDetailDTO>> getAll() {
+    public ResponseEntity<Map<String, Object>> getAll() {
         List<SaleDetailDTO> saleDetails = saleDetailService.getAllSaleDetails();
+        Map<String, Object> response = new HashMap<>();
+
         if (saleDetails.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            response.put("status", "error");
+            response.put("message", "No sale details found");
+            return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(saleDetails, HttpStatus.OK);
+
+        response.put("status", "success");
+        response.put("data", saleDetails);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SaleDetailDTO> getSaleDetail(@PathVariable("id") int saleDetailId) {
+    public ResponseEntity<Map<String, Object>> getSaleDetail(@PathVariable("id") int saleDetailId) {
+        Map<String, Object> response = new HashMap<>();
         Optional<SaleDetailDTO> saleDetail = saleDetailService.getSaleDetailById(saleDetailId);
-        return saleDetail.map(saleDetailDTO
-                -> new ResponseEntity<>(saleDetailDTO, HttpStatus.OK)).orElseGet(()
-                -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+
+        if (saleDetail.isPresent()) {
+            response.put("status", "success");
+            response.put("data", saleDetail.get());
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } else {
+            response.put("status", "error");
+            response.put("message", "Sale detail not found");
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("/save")
-    public ResponseEntity<SaleDetailDTO> save(@Valid @RequestBody SaleDetailDTO saleDetailDTO) {
+    public ResponseEntity<Map<String, Object>> save(@Valid @RequestBody SaleDetailDTO saleDetailDTO) {
+        Map<String, Object> response = new HashMap<>();
         SaleDetailDTO savedSaleDetail = saleDetailService.saveSaleDetail(saleDetailDTO);
-        return new ResponseEntity<>(savedSaleDetail, HttpStatus.CREATED);
+
+        response.put("status", "success");
+        response.put("message", "Sale detail created successfully");
+        response.put("data", savedSaleDetail);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<SaleDetailDTO> edit(@PathVariable("id") int saleDetailId, @Valid @RequestBody SaleDetailDTO saleDetailDTO) {
+    public ResponseEntity<Map<String, Object>> edit(@PathVariable("id") int saleDetailId, @Valid @RequestBody SaleDetailDTO saleDetailDTO) {
+        Map<String, Object> response = new HashMap<>();
         Optional<SaleDetailDTO> existingSaleDetail = saleDetailService.getSaleDetailById(saleDetailId);
+
         if (existingSaleDetail.isPresent()) {
             saleDetailDTO.setId(saleDetailId);
             SaleDetailDTO updatedSaleDetail = saleDetailService.saveSaleDetail(saleDetailDTO);
-            return new ResponseEntity<>(updatedSaleDetail, HttpStatus.OK);
+
+            response.put("status", "success");
+            response.put("message", "Sale detail updated successfully");
+            response.put("data", updatedSaleDetail);
+            return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        response.put("status", "error");
+        response.put("message", "Sale detail not found");
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> delete(@PathVariable("id") int saleDetailId) {
+    public ResponseEntity<Map<String, Object>> delete(@PathVariable("id") int saleDetailId) {
+        Map<String, Object> response = new HashMap<>();
         boolean deleted = saleDetailService.deleteSaleDetail(saleDetailId);
+
         if (deleted) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            response.put("status", "success");
+            response.put("message", "Sale detail deleted successfully");
+            return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        response.put("status", "error");
+        response.put("message", "Sale detail not found");
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 }

@@ -9,7 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -20,59 +22,103 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<UserDTO>> getAll() {
+    public ResponseEntity<Map<String, Object>> getAll() {
         List<UserDTO> users = userService.getAllUsers();
+        Map<String, Object> response = new HashMap<>();
+
         if (users.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            response.put("status", "error");
+            response.put("message", "No users found");
+            return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(users, HttpStatus.OK);
+
+        response.put("status", "success");
+        response.put("data", users);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> getUser(@PathVariable("id") int userId) {
+    public ResponseEntity<Map<String, Object>> getUser(@PathVariable("id") int userId) {
+        Map<String, Object> response = new HashMap<>();
         Optional<UserDTO> user = userService.getUserById(userId);
-        return user.map(userDTO
-                -> new ResponseEntity<>(userDTO, HttpStatus.OK)).orElseGet(()
-                -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+
+        if (user.isPresent()) {
+            response.put("status", "success");
+            response.put("data", user.get());
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } else {
+            response.put("status", "error");
+            response.put("message", "User not found");
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("/save")
-    public ResponseEntity<UserDTO> save(@Valid @RequestBody UserDTO userDTO) {
+    public ResponseEntity<Map<String, Object>> save(@Valid @RequestBody UserDTO userDTO) {
+        Map<String, Object> response = new HashMap<>();
         UserDTO savedUser = userService.saveUser(userDTO);
-        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+
+        response.put("status", "success");
+        response.put("message", "User created successfully");
+        response.put("data", savedUser);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequestDTO loginRequest) {
+    public ResponseEntity<Map<String, Object>> login(@RequestBody LoginRequestDTO loginRequest) {
+        Map<String, Object> response = new HashMap<>();
+
         try {
             boolean success = userService.login(loginRequest.getLogin(), loginRequest.getPassword());
             if (success) {
-                return new ResponseEntity<>("login successful", HttpStatus.OK);
+                response.put("status", "success");
+                response.put("message", "Login successful");
+                return new ResponseEntity<>(response, HttpStatus.OK);
             } else {
-                return new ResponseEntity<>("invalid credentials", HttpStatus.UNAUTHORIZED);
+                response.put("status", "error");
+                response.put("message", "Invalid credentials");
+                return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
             }
         } catch (IllegalArgumentException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
+            response.put("status", "error");
+            response.put("message", e.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<UserDTO> edit(@PathVariable("id") int userId, @Valid @RequestBody UserDTO userDTO) {
+    public ResponseEntity<Map<String, Object>> edit(@PathVariable("id") int userId, @Valid @RequestBody UserDTO userDTO) {
+        Map<String, Object> response = new HashMap<>();
         Optional<UserDTO> existingUser = userService.getUserById(userId);
+
         if (existingUser.isPresent()) {
             userDTO.setId(userId);
             UserDTO updatedUser = userService.saveUser(userDTO);
-            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+
+            response.put("status", "success");
+            response.put("message", "User updated successfully");
+            response.put("data", updatedUser);
+            return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        response.put("status", "error");
+        response.put("message", "User not found");
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> delete(@PathVariable("id") int userId) {
+    public ResponseEntity<Map<String, Object>> delete(@PathVariable("id") int userId) {
+        Map<String, Object> response = new HashMap<>();
         boolean deleted = userService.deleteUser(userId);
+
         if (deleted) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            response.put("status", "success");
+            response.put("message", "User deleted successfully");
+            return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        response.put("status", "error");
+        response.put("message", "User not found");
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 }

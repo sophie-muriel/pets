@@ -4,26 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc95c9cc-30eb-4b3f-b069-511759a85fa7" name="Changes" comment="Entornos???? No sé">
-      <change afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/dto/LoginRequestDTO.java" afterDir="false" />
+    <list default="true" id="bc95c9cc-30eb-4b3f-b069-511759a85fa7" name="Changes" comment="Login funciona!!!!!!">
+      <change afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/config/CorsConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/PetsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/PetsApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/PetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/PetService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/SaleDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/SaleDetailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/SaleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/SaleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/ServiceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/ServiceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/domain/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/PetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/SaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/SaleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/SaleDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/SaleDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/ServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/ServiceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/CategoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/CategoryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/ClientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/ClientService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/PetService.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/PetService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/SaleDetailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/SaleDetailService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/SaleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/SaleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/ServiceService.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/ServiceService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/domain/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/UserController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730855512830</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Login funciona!!!!!!">
+      <option name="closed" value="true" />
+      <created>1730927353845</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1730927353845</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -228,6 +226,7 @@
     <MESSAGE value="Validaciones. Parte 2. Última parte. (Espero)." />
     <MESSAGE value="Validaciones (no era la última parte) y end points y método de editar y aaaa" />
     <MESSAGE value="Entornos???? No sé" />
-    <option name="LAST_COMMIT_MESSAGE" value="Entornos???? No sé" />
+    <MESSAGE value="Login funciona!!!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login funciona!!!!!!" />
   </component>
 </project>
