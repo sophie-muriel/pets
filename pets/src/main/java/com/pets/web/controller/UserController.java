@@ -30,8 +30,8 @@ public class UserController {
             response.put("status", "error");
             response.put("message", "No users found");
             return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
-        }
 
+        }
         response.put("status", "success");
         response.put("data", users);
         return new ResponseEntity<>(response, HttpStatus.OK);
@@ -87,7 +87,8 @@ public class UserController {
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<Map<String, Object>> edit(@PathVariable("id") int userId, @Valid @RequestBody UserDTO userDTO) {
+    public ResponseEntity<Map<String, Object>> edit(@PathVariable("id") int userId,
+            @Valid @RequestBody UserDTO userDTO) {
         Map<String, Object> response = new HashMap<>();
         Optional<UserDTO> existingUser = userService.getUserById(userId);
 

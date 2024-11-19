@@ -4,7 +4,7 @@ import com.pets.domain.dto.SaleDTO;
 import com.pets.persistence.entity.ClientEntity;
 import com.pets.persistence.entity.SaleEntity;
 import com.pets.persistence.entity.UserEntity;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-05T00:20:37-0500",
-    comments = "version: 1.6.2, compiler: javac, environment: Java 22.0.2 (Amazon.com Inc.)"
+    date = "2024-11-19T01:28:19-0500",
+    comments = "version: 1.6.2, compiler: Eclipse JDT (IDE) 3.40.0.z20241023-1306, environment: Java 17.0.13 (Eclipse Adoptium)"
 )
 @Component
 public class SaleMapperImpl implements SaleMapper {
@@ -28,7 +28,7 @@ public class SaleMapperImpl implements SaleMapper {
         Integer clientId = null;
         Integer id = null;
         String paymentMethod = null;
-        LocalDateTime saleDate = null;
+        LocalDate saleDate = null;
         String status = null;
         Double totalPrice = null;
 

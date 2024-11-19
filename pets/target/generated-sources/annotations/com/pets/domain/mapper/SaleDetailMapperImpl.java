@@ -4,7 +4,7 @@ import com.pets.domain.dto.SaleDetailDTO;
 import com.pets.persistence.entity.PetEntity;
 import com.pets.persistence.entity.SaleDetailEntity;
 import com.pets.persistence.entity.ServiceEntity;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-05T00:20:37-0500",
-    comments = "version: 1.6.2, compiler: javac, environment: Java 22.0.2 (Amazon.com Inc.)"
+    date = "2024-11-19T01:28:19-0500",
+    comments = "version: 1.6.2, compiler: Eclipse JDT (IDE) 3.40.0.z20241023-1306, environment: Java 17.0.13 (Eclipse Adoptium)"
 )
 @Component
 public class SaleDetailMapperImpl implements SaleDetailMapper {
@@ -27,7 +27,7 @@ public class SaleDetailMapperImpl implements SaleDetailMapper {
         Integer serviceId = null;
         Integer petId = null;
         Integer id = null;
-        LocalDateTime scheduledDate = null;
+        LocalDate scheduledDate = null;
 
         serviceId = entityServiceId( entity );
         petId = entityPetId( entity );

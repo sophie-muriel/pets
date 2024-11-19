@@ -4,16 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc95c9cc-30eb-4b3f-b069-511759a85fa7" name="Changes" comment="Login funciona!!!!!!">
-      <change afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/config/CorsConfig.java" afterDir="false" />
+    <list default="true" id="bc95c9cc-30eb-4b3f-b069-511759a85fa7" name="Changes" comment="quisiera ser una moscaaaaa para pararme en tu pieeeeeeeeeeeeeel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/PetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/SaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/SaleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/SaleDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/SaleDetailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/ServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/ServiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/src/main/java/com/pets/web/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/CategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/CategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/ClientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/ClientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/PetController.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/PetController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/SaleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/SaleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/SaleDetailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/SaleDetailController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/ServiceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/ServiceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/classes/com/pets/web/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/CategoryMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/CategoryMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/ClientMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/ClientMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/PetMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/PetMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/SaleDetailMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/SaleDetailMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/SaleMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/SaleMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/ServiceMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/ServiceMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/pets/target/generated-sources/annotations/com/pets/domain/mapper/UserMapperImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +179,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730927353845</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="quisiera ser una moscaaaaa para pararme en tu pieeeeeeeeeeeeeel">
+      <option name="closed" value="true" />
+      <created>1731994156898</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1731994156898</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -227,6 +241,7 @@
     <MESSAGE value="Validaciones (no era la última parte) y end points y método de editar y aaaa" />
     <MESSAGE value="Entornos???? No sé" />
     <MESSAGE value="Login funciona!!!!!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login funciona!!!!!!" />
+    <MESSAGE value="quisiera ser una moscaaaaa para pararme en tu pieeeeeeeeeeeeeel" />
+    <option name="LAST_COMMIT_MESSAGE" value="quisiera ser una moscaaaaa para pararme en tu pieeeeeeeeeeeeeel" />
   </component>
 </project>
