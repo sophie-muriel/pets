@@ -64,13 +64,14 @@ public class ClientController {
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<Map<String, Object>> edit(@PathVariable("id") int clientId, @Valid @RequestBody ClientDTO clientDTO) {
+    public ResponseEntity<Map<String, Object>> edit(@PathVariable("id") int clientId,
+            @Valid @RequestBody ClientDTO clientDTO) {
         Map<String, Object> response = new HashMap<>();
         Optional<ClientDTO> existingClient = clientService.getClientById(clientId);
 
         if (existingClient.isPresent()) {
             clientDTO.setId(clientId);
-            ClientDTO updatedClient = clientService.saveClient(clientDTO);
+            ClientDTO updatedClient = clientService.editClient(clientId, clientDTO);
 
             response.put("status", "success");
             response.put("message", "Client updated successfully");

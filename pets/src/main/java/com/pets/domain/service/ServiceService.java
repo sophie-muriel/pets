@@ -44,4 +44,29 @@ public class ServiceService {
             throw new IllegalArgumentException("service not found");
         }
     }
+
+    public ServiceDTO editService(int serviceId, ServiceDTO updatedService) {
+        Optional<ServiceDTO> existingServiceOptional = serviceRepository.getServiceById(serviceId);
+        if (existingServiceOptional.isEmpty()) {
+            throw new IllegalArgumentException("Service not found");
+        }
+        ServiceDTO existingService = existingServiceOptional.get();
+
+        if (updatedService.getName() != null && !updatedService.getName().equals(existingService.getName())) {
+            existingService.setName(updatedService.getName());
+        }
+        if (updatedService.getDescription() != null
+                && !updatedService.getDescription().equals(existingService.getDescription())) {
+            existingService.setDescription(updatedService.getDescription());
+        }
+        if (updatedService.getPrice() != null && !updatedService.getPrice().equals(existingService.getPrice())) {
+            existingService.setPrice(updatedService.getPrice());
+        }
+        if (updatedService.getCategoryId() != null
+                && !updatedService.getCategoryId().equals(existingService.getCategoryId())) {
+            existingService.setCategoryId(updatedService.getCategoryId());
+        }
+
+        return serviceRepository.saveService(existingService);
+    }
 }

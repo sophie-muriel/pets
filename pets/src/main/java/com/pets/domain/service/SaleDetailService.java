@@ -44,4 +44,32 @@ public class SaleDetailService {
             throw new IllegalArgumentException("sale detail not found");
         }
     }
+
+    public SaleDetailDTO editSaleDetail(int saleDetailId, SaleDetailDTO updatedSaleDetail) {
+        Optional<SaleDetailDTO> existingSaleDetailOptional = saleDetailRepository.getSaleDetailById(saleDetailId);
+        if (existingSaleDetailOptional.isEmpty()) {
+            throw new IllegalArgumentException("Sale detail not found");
+        }
+        SaleDetailDTO existingSaleDetail = existingSaleDetailOptional.get();
+
+        if (updatedSaleDetail.getServiceId() != null
+                && !updatedSaleDetail.getServiceId().equals(existingSaleDetail.getServiceId())) {
+            existingSaleDetail.setServiceId(updatedSaleDetail.getServiceId());
+        }
+        if (updatedSaleDetail.getPetId() != null
+                && !updatedSaleDetail.getPetId().equals(existingSaleDetail.getPetId())) {
+
+            if (petService.getPetById(updatedSaleDetail.getPetId()).isEmpty()) {
+                throw new IllegalArgumentException("Pet not found");
+            }
+            existingSaleDetail.setPetId(updatedSaleDetail.getPetId());
+        }
+        if (updatedSaleDetail.getScheduledDate() != null
+                && !updatedSaleDetail.getScheduledDate().equals(existingSaleDetail.getScheduledDate())) {
+            existingSaleDetail.setScheduledDate(updatedSaleDetail.getScheduledDate());
+        }
+
+        return saleDetailRepository.saveSaleDetail(existingSaleDetail);
+    }
+
 }

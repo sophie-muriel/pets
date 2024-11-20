@@ -50,4 +50,34 @@ public class SaleService {
             throw new IllegalArgumentException("sale not found");
         }
     }
+
+    public SaleDTO editSale(int saleId, SaleDTO updatedSale) {
+        Optional<SaleDTO> existingSaleOptional = saleRepository.getSaleById(saleId);
+        if (existingSaleOptional.isEmpty()) {
+            throw new IllegalArgumentException("Sale not found");
+        }
+        SaleDTO existingSale = existingSaleOptional.get();
+
+        if (updatedSale.getUserId() != null && !updatedSale.getUserId().equals(existingSale.getUserId())) {
+            existingSale.setUserId(updatedSale.getUserId());
+        }
+        if (updatedSale.getClientId() != null && !updatedSale.getClientId().equals(existingSale.getClientId())) {
+            existingSale.setClientId(updatedSale.getClientId());
+        }
+        if (updatedSale.getTotalPrice() != null && !updatedSale.getTotalPrice().equals(existingSale.getTotalPrice())) {
+            existingSale.setTotalPrice(updatedSale.getTotalPrice());
+        }
+        if (updatedSale.getSaleDate() != null && !updatedSale.getSaleDate().equals(existingSale.getSaleDate())) {
+            existingSale.setSaleDate(updatedSale.getSaleDate());
+        }
+        if (updatedSale.getStatus() != null && !updatedSale.getStatus().equals(existingSale.getStatus())) {
+            existingSale.setStatus(updatedSale.getStatus());
+        }
+        if (updatedSale.getPaymentMethod() != null
+                && !updatedSale.getPaymentMethod().equals(existingSale.getPaymentMethod())) {
+            existingSale.setPaymentMethod(updatedSale.getPaymentMethod());
+        }
+
+        return saleRepository.saveSale(existingSale);
+    }
 }

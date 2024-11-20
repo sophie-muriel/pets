@@ -1,7 +1,6 @@
 package com.pets.domain.service;
 
 import com.pets.domain.dto.CategoryDTO;
-import com.pets.domain.dto.ClientDTO;
 import com.pets.domain.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,4 +42,20 @@ public class CategoryService {
             throw new IllegalArgumentException("category not found");
         }
     }
+
+    public CategoryDTO editCategory(int categoryId, CategoryDTO updatedCategory) {
+        Optional<CategoryDTO> existingCategoryOptional = categoryRepository.getCategoryById(categoryId);
+        if (existingCategoryOptional.isEmpty()) {
+            throw new IllegalArgumentException("Category not found");
+        }
+        CategoryDTO existingCategory = existingCategoryOptional.get();
+
+        if (updatedCategory.getCategory() != null
+                && !updatedCategory.getCategory().equals(existingCategory.getCategory())) {
+            existingCategory.setCategory(updatedCategory.getCategory());
+        }
+
+        return categoryRepository.saveCategory(existingCategory);
+    }
+
 }

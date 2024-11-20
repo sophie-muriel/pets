@@ -64,13 +64,14 @@ public class CategoryController {
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<Map<String, Object>> edit(@PathVariable("id") int categoryId, @Valid @RequestBody CategoryDTO categoryDTO) {
+    public ResponseEntity<Map<String, Object>> edit(@PathVariable("id") int categoryId,
+            @Valid @RequestBody CategoryDTO categoryDTO) {
         Map<String, Object> response = new HashMap<>();
         Optional<CategoryDTO> existingCategory = categoryService.getCategoryById(categoryId);
 
         if (existingCategory.isPresent()) {
             categoryDTO.setId(categoryId);
-            CategoryDTO updatedCategory = categoryService.saveCategory(categoryDTO);
+            CategoryDTO updatedCategory = categoryService.editCategory(categoryId, categoryDTO);
 
             response.put("status", "success");
             response.put("message", "Category updated successfully");

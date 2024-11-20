@@ -64,13 +64,14 @@ public class SaleDetailController {
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<Map<String, Object>> edit(@PathVariable("id") int saleDetailId, @Valid @RequestBody SaleDetailDTO saleDetailDTO) {
+    public ResponseEntity<Map<String, Object>> edit(@PathVariable("id") int saleDetailId,
+            @Valid @RequestBody SaleDetailDTO saleDetailDTO) {
         Map<String, Object> response = new HashMap<>();
         Optional<SaleDetailDTO> existingSaleDetail = saleDetailService.getSaleDetailById(saleDetailId);
 
         if (existingSaleDetail.isPresent()) {
             saleDetailDTO.setId(saleDetailId);
-            SaleDetailDTO updatedSaleDetail = saleDetailService.saveSaleDetail(saleDetailDTO);
+            SaleDetailDTO updatedSaleDetail = saleDetailService.editSaleDetail(saleDetailId, saleDetailDTO);
 
             response.put("status", "success");
             response.put("message", "Sale detail updated successfully");

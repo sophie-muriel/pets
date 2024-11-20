@@ -64,13 +64,14 @@ public class ServiceController {
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<Map<String, Object>> edit(@PathVariable("id") int serviceId, @Valid @RequestBody ServiceDTO serviceDTO) {
+    public ResponseEntity<Map<String, Object>> edit(@PathVariable("id") int serviceId,
+            @Valid @RequestBody ServiceDTO serviceDTO) {
         Map<String, Object> response = new HashMap<>();
         Optional<ServiceDTO> existingService = serviceService.getServiceById(serviceId);
 
         if (existingService.isPresent()) {
             serviceDTO.setId(serviceId);
-            ServiceDTO updatedService = serviceService.saveService(serviceDTO);
+            ServiceDTO updatedService = serviceService.editService(serviceId, serviceDTO);
 
             response.put("status", "success");
             response.put("message", "Service updated successfully");

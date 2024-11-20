@@ -70,7 +70,7 @@ public class PetController {
 
         if (existingPet.isPresent()) {
             petDTO.setId(petId);
-            PetDTO updatedPet = petService.savePet(petDTO);
+            PetDTO updatedPet = petService.editPet(petId, petDTO);
 
             response.put("status", "success");
             response.put("message", "Pet updated successfully");
