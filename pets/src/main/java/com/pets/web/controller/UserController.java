@@ -67,22 +67,16 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(@RequestBody LoginRequestDTO loginRequest) {
         Map<String, Object> response = new HashMap<>();
-
         try {
-            boolean success = userService.login(loginRequest.getLogin(), loginRequest.getPassword());
-            if (success) {
-                response.put("status", "success");
-                response.put("message", "Login successful");
-                return new ResponseEntity<>(response, HttpStatus.OK);
-            } else {
-                response.put("status", "error");
-                response.put("message", "Invalid credentials");
-                return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
-            }
+            UserDTO user = userService.login(loginRequest.getLogin(), loginRequest.getPassword());
+            response.put("status", "success");
+            response.put("message", "Login successful");
+            response.put("data", user);
+            return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (IllegalArgumentException e) {
             response.put("status", "error");
             response.put("message", e.getMessage());
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -94,7 +88,7 @@ public class UserController {
 
         if (existingUser.isPresent()) {
             userDTO.setId(userId);
-            UserDTO updatedUser = userService.saveUser(userDTO);
+            UserDTO updatedUser = userService.editUser(userId, userDTO);
 
             response.put("status", "success");
             response.put("message", "User updated successfully");

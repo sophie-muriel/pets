@@ -25,12 +25,12 @@ public class UserService {
         return user;
     }
 
-    public boolean login(String login, String password) {
+    public UserDTO login(String login, String password) {
         Optional<UserDTO> temp = userRepository.findByLogin(login);
         if (temp.isPresent()) {
             UserDTO user = temp.get();
             if (user.getPassword().equals(password)) {
-                return true;
+                return user;
             }
         }
         throw new IllegalArgumentException("invalid credentials");
@@ -52,4 +52,34 @@ public class UserService {
             throw new IllegalArgumentException("user not found");
         }
     }
+
+    public UserDTO editUser(int userId, UserDTO updatedUser) {
+        Optional<UserDTO> existingUserOptional = userRepository.getUserById(userId);
+        if (existingUserOptional.isEmpty()) {
+            throw new IllegalArgumentException("User not found");
+        }
+        UserDTO existingUser = existingUserOptional.get();
+
+        if (updatedUser.getLogin() != null && !updatedUser.getLogin().equals(existingUser.getLogin())) {
+            existingUser.setLogin(updatedUser.getLogin());
+        }
+        if (updatedUser.getPassword() != null) {
+            existingUser.setPassword(updatedUser.getPassword());
+        }
+        if (updatedUser.getName() != null) {
+            existingUser.setName(updatedUser.getName());
+        }
+        if (updatedUser.getEmail() != null) {
+            existingUser.setEmail(updatedUser.getEmail());
+        }
+        if (updatedUser.getPhoneNumber() != null) {
+            existingUser.setPhoneNumber(updatedUser.getPhoneNumber());
+        }
+        if (updatedUser.getRole() != null) {
+            existingUser.setRole(updatedUser.getRole());
+        }
+
+        return userRepository.saveUser(existingUser);
+    }
+
 }
