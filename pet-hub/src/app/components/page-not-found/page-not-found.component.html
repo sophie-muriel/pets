@@ -1,0 +1,26 @@
+<section class="relative min-h-screen w-full overflow-hidden flex items-center justify-center">
+  <div class="relative z-10 w-full px-4 py-12 lg:w-1/2 lg:px-40 lg:py-32 text-center">
+    <div class="mx-auto max-w-xl lg:ml-24 lg:mt-20">
+      <div>
+        <h1 class="mt-4 text-balance text-4xl font-bold tracking-tight text-black sm:text-5xl lg:text-6xl">
+          404 - <span class="text-primary-blue">Page Not Found</span>
+        </h1>
+        <p class="mt-6 text-base leading-7 text-gray-700 md:text-lg">
+          It seems like the page you're looking for has either been moved or doesn't exist anymore.
+        </p>
+        <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:gap-6 justify-center">
+          <button
+            routerLink="/"
+            class="rounded-lg bg-tertiary-light-blue px-6 py-3 text-sm font-semibold text-black transition transform hover:scale-105 hover:text-primary-blue shadow-md">
+            Go Home
+          </button>
+          <button
+            routerLink="/contact"
+            class="rounded-lg px-8 py-3 text-sm font-semibold leading-6 text-gray-700 ring-1 ring-tertiary-light-blue transition transform hover:scale-105 transition-colors hover:text-primary-blue shadow-md">
+            Contact Support <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

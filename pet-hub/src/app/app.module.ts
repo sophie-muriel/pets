@@ -12,9 +12,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ServicesComponent } from './components/services/services.component';
-import { DashboardComponent } from './components/account/dashboard/dashboard.component';
-import { ScrollService } from './services/scroll.service';
 import { ContactComponent } from './components/contact/contact.component';
+import { ClientsComponent } from './components/account/clients/clients.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +26,9 @@ import { ContactComponent } from './components/contact/contact.component';
     HomeComponent,
     LoginComponent,
     ServicesComponent,
-    DashboardComponent,
     ContactComponent,
+    ClientsComponent,
+    PageNotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

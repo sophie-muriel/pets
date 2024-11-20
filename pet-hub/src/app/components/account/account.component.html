@@ -1,71 +1,61 @@
 <div
-  class="relative min-h-screen w-full overflow-hidden flex flex-col items-center">
-  <!-- Welcome Section -->
-  <div class="w-full mt-10 py-8 text-center text-black">
-    <h1 class="text-3xl font-bold">
-      Welcome, <span class="text-primary-blue">{{ user.name }}</span>
-    </h1>
-    <p class="mt-2 text-md">Manage your account and access the dashboard</p>
-  </div>
+  class="relative min-h-screen w-full overflow-hidden flex flex-col items-center mt-20">
+  <h1 class="text-3xl font-bold mb-8 text-left w-full max-w-6xl">
+    Welcome, <span class="text-primary-blue">{{ user.name }}</span>
+  </h1>  
 
-  <!-- Edit Information Button -->
-  <div class="max-w-4xl w-full px-6 lg:px-8">
+  <div class="grid grid-cols-1 lg:grid-cols-7 gap-12 w-full max-w-7xl">
+    <div class="col-span-1 lg:col-span-2 px-6">
+      <h2 class="text-lg font-semibold mb-6">Your Information</h2>
+      <form (ngSubmit)="editUser()" #editUserForm="ngForm">
+        <div class="space-y-6">
+          <div *ngFor="let field of fields" class="flex flex-col">
+            <label for="{{ field.name }}"
+              class="block text-sm font-medium text-gray-700">{{ field.label
+              }}</label>
+            <input
+              [type]="field.type"
+              [id]="field.name"
+              [(ngModel)]="user[field.name]"
+              [name]="field.name"
+              class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue" />
+          </div>
+        </div>
+        <div class="mt-6">
+          <button
+            type="submit"
+            class="rounded-lg bg-tertiary-light-blue px-6 py-3 text-sm font-semibold text-black transition transform hover:scale-105 hover:text-primary-blue shadow-md w-full">
+            Edit Information
+          </button>
+        </div>
+      </form>
+    </div>
 
-    <div class="flex justify-between items-center">
-      <div>
-        <ul class="mt-4 space-y-2 text-gray-600">
-          <li><strong>Name:</strong> {{ user.name }}</li>
-          <li><strong>Email:</strong> {{ user.email }}</li>
-          <li><strong>Phone:</strong> {{ user.phoneNumber || 'N/A' }}</li>
-          <li><strong>Role:</strong> {{ user.role }}</li>
-        </ul>
+    <div *ngIf="showModal"
+      class="modal fixed inset-0 bg-opacity-50 bg-gray-700 flex justify-center items-center">
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-lg font-semibold text-primary-blue">Success!</h3>
+        <p class="text-sm text-gray-700">Your information was edited
+          successfully.</p>
       </div>
     </div>
-  </div>
 
-  <!-- Dashboard Section (Table of Entities) -->
-  <div class="mt-10 max-w-4xl w-full px-6 lg:px-8">
-    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Dashboard</h2>
-
-    <!-- Table for Entities -->
-    <div class="overflow-x-auto">
-      <table class="min-w-full mb-20 bg-white shadow-md rounded-lg">
-        <tbody>
-          <tr *ngFor="let entity of entities" class="border-b">
-            <td class="py-4 px-6 text-gray-800">{{ entity.label }}</td>
-            <td class="py-4 px-6">
-              <button
-                class="bg-primary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue">
-                Save
-              </button>
-            </td>
-            <td class="py-4 px-6">
-              <button
-                class="bg-primary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue">
-                Edit
-              </button>
-            </td>
-            <td class="py-4 px-6">
-              <button
-                class="bg-primary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue">
-                Search
-              </button>
-            </td>
-            <td class="py-4 px-6">
-              <button
-                class="bg-primary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue">
-                Delete
-              </button>
-            </td>
-            <td class="py-4 px-6">
-              <button
-                class="bg-primary-blue text-white py-2 px-4 rounded-md hover:bg-dark-blue">
-                See All
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-span-1 lg:col-span-5 px-6">
+      <h2 class="text-lg font-bold text-gray-800 mb-6">Dashboard</h2>
+      <div class>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div *ngFor="let entity of entities" class="cursor-pointer" (click)="navigateToEntity(entity)">
+            <div
+              class="bg-white p-6 rounded-lg shadow-md hover:scale-105 transform transition-all">
+              <div class="flex justify-center items-center mb-4">
+                <i [ngClass]="getIcon(entity)" class="text-6xl text-primary-blue"></i>
+              </div>
+              <h3 class="text-md font-semibold text-center text-gray-800">{{
+                entity.label }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

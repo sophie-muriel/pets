@@ -1,0 +1,122 @@
+<div class="relative min-h-screen w-full overflow-hidden flex flex-col items-center mt-20">
+  <h1 class="text-3xl font-bold mb-8 text-left w-full max-w-6xl">
+    Client Management
+  </h1>
+
+  <div class="grid grid-cols-1 lg:grid-cols-7 gap-12 w-full max-w-7xl">
+    <!-- Client Form Section -->
+    <div class="col-span-1 lg:col-span-2 px-6">
+      <h2 class="text-lg font-semibold mb-6">Client Information</h2>
+      <form #clientForm="ngForm">
+        <div class="space-y-6">
+          <!-- Client Name -->
+          <div class="flex flex-col">
+            <label for="name" class="block text-sm font-medium text-gray-700">Client Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue"
+              placeholder="Enter client name"
+            />
+          </div>
+
+          <!-- Client Email -->
+          <div class="flex flex-col">
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue"
+              placeholder="Enter client email"
+            />
+          </div>
+
+          <!-- Client Phone Number -->
+          <div class="flex flex-col">
+            <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Phone Number</label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              name="phoneNumber"
+              class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue"
+              placeholder="Enter phone number"
+            />
+          </div>
+
+          <!-- Client Address -->
+          <div class="flex flex-col">
+            <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue"
+              placeholder="Enter client address"
+            />
+          </div>
+        </div>
+
+        <!-- Buttons Section (Top) -->
+        <div class="mt-6 flex gap-4">
+          <button
+            type="submit"
+            class="rounded-lg bg-tertiary-light-blue px-6 py-3 text-sm font-semibold text-black transition transform hover:scale-105 hover:text-primary-blue shadow-md w-1/2">
+            Save
+          </button>
+          <button
+            type="button"
+            class="rounded-lg bg-tertiary-light-blue px-6 py-3 text-sm font-semibold text-black transition transform hover:scale-105 hover:text-primary-blue shadow-md w-1/2">
+            Edit
+          </button>
+        </div>
+      </form>
+
+      <!-- Buttons Section (Bottom) -->
+      <div class="mt-6 flex gap-4">
+        <button
+          type="button"
+          class="rounded-lg bg-tertiary-light-blue px-6 py-3 text-sm font-semibold text-black transition transform hover:scale-105 hover:text-primary-blue shadow-md w-1/2">
+          Search
+        </button>
+        <button
+          type="button"
+          class="rounded-lg bg-tertiary-light-blue px-6 py-3 text-sm font-semibold text-black transition transform hover:scale-105 hover:text-primary-blue shadow-md w-1/2">
+          Delete
+        </button>
+      </div>
+    </div>
+
+    <!-- Clients List Section -->
+    <div class="col-span-1 lg:col-span-5 px-6">
+      <h2 class="text-lg font-bold text-gray-800 mb-6">Clients List</h2>
+      <div class="overflow-hidden bg-white shadow-md rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="px-6 py-3 text-left text-sm font-medium text-gray-900">Client Name</th>
+              <th class="px-6 py-3 text-left text-sm font-medium text-gray-900">Email</th>
+              <th class="px-6 py-3 text-left text-sm font-medium text-gray-900">Phone Number</th>
+              <th class="px-6 py-3 text-left text-sm font-medium text-gray-900">Address</th>
+              <th class="px-6 py-3 text-left text-sm font-medium text-gray-900">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <!-- Loop through clients here -->
+            <!-- <tr *ngFor="let client of clients">
+              <td class="px-6 py-4 text-sm text-gray-900">{{ client.name }}</td>
+              <td class="px-6 py-4 text-sm text-gray-900">{{ client.email }}</td>
+              <td class="px-6 py-4 text-sm text-gray-900">{{ client.phoneNumber }}</td>
+              <td class="px-6 py-4 text-sm text-gray-900">{{ client.address }}</td>
+              <td class="px-6 py-4 text-sm font-medium text-gray-900">
+                <button class="text-primary-blue hover:text-primary-dark">Edit</button>
+                <button class="text-red-500 hover:text-red-700 ml-4">Delete</button>
+              </td>
+            </tr> -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
