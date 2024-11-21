@@ -11,6 +11,10 @@ export class AccountComponent implements OnInit {
   user: any;
   showModal = false;
 
+  // Modal properties
+  modalTitle = '';
+  modalMessage = '';
+
   fields = [
     { name: 'login', label: 'Login', type: 'text' },
     { name: 'password', label: 'Password', type: 'password' },
@@ -34,7 +38,11 @@ export class AccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.getCurrentUser().subscribe((user) => {
-      this.user = user;
+      if (!user) {
+        this.router.navigate(['/login']);  // Redirect to login if the user is null
+      } else {
+        this.user = user;
+      }
     });
   }
 
@@ -42,17 +50,24 @@ export class AccountComponent implements OnInit {
     this.authService.editUser(this.user).subscribe(
       (response) => {
         if (response.status === 'success') {
-          this.showModal = true;
-          setTimeout(() => {
-            this.showModal = false;
-          }, 3000);
+          this.showModalMessage('Success', 'User information updated successfully!');
         }
       },
       (error) => {
         console.error('Error updating user information:', error);
-        alert('Failed to update user information.');
+        this.showModalMessage('Error', 'Failed to update user information.');
       }
     );
+  }
+
+  showModalMessage(title: string, message: string): void {
+    this.modalTitle = title;
+    this.modalMessage = message;
+    this.showModal = true;
+  }
+
+  closeModal(): void {
+    this.showModal = false;
   }
 
   getIcon(entity: any): string {

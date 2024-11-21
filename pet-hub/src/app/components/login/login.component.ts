@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   login: string = '';
   password: string = '';
-  errorMessage: string = '';
+  showModal = false;  // To control the modal visibility
+  modalTitle = '';
+  modalMessage = '';
+  confirmButtonText = 'OK';  // Default confirm button text
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -18,17 +21,26 @@ export class LoginComponent implements OnInit {
 
   onLogin(): void {
     const credentials = { login: this.login, password: this.password };
-
-    // Use AuthService's login method
+  
     this.authService.login(credentials).subscribe(
       (response) => {
-        console.log('Login successful', response);
         this.router.navigate(['/account']);
       },
       (error) => {
-        console.error('Login failed', error);
-        this.errorMessage = 'Invalid username or password';
+        this.showModalMessage('Login Failed', error.message || 'Invalid username or password');
       }
     );
+  }
+  
+
+  // Method to show the modal with an error message
+  showModalMessage(title: string, message: string): void {
+    this.modalTitle = title;
+    this.modalMessage = message;
+    this.showModal = true;
+  }
+
+  closeModal(): void {
+    this.showModal = false;
   }
 }

@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { tap, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -32,14 +32,13 @@ export class AuthService {
             localStorage.setItem('isLoggedIn', 'true');
             this.currentUserSubject.next(response.data);
             localStorage.setItem('currentUser', JSON.stringify(response.data));
+            this.router.navigate(['/account']);
           }
         }),
         catchError((error) => {
-          console.error('Login failed:', error);
-          return of({
-            status: 'error',
-            message: 'Login failed, please try again',
-          });
+          localStorage.removeItem('isLoggedIn');
+          localStorage.removeItem('currentUser');
+          return throwError(() => new Error('Invalid username or password, please try again.'));
         })
       );
   }
@@ -72,11 +71,7 @@ export class AuthService {
           }
         }),
         catchError((error) => {
-          console.error('Error updating user:', error);
-          return of({
-            status: 'error',
-            message: 'Failed to update user information',
-          });
+          return throwError(() => new Error('Failed to update user information'));
         })
       );
   }

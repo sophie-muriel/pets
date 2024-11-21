@@ -7,8 +7,11 @@
     <!-- Client Form Section -->
     <div class="col-span-1 lg:col-span-2 px-6">
       <h2 class="text-lg font-semibold mb-6">Client Information</h2>
-      <form #clientForm="ngForm">
+      <form #clientForm="ngForm" novalidate>
         <div class="space-y-6">
+          <!-- Client ID (Hidden) -->
+          <input type="hidden" [(ngModel)]="clientFormData.id" name="id" />
+
           <!-- Client Name -->
           <div class="flex flex-col">
             <label for="name" class="block text-sm font-medium text-gray-700">Client Name</label>
@@ -16,76 +19,85 @@
               type="text"
               id="name"
               name="name"
+              [(ngModel)]="clientFormData.name"
               class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue"
               placeholder="Enter client name"
+              required
             />
           </div>
 
-          <!-- Client Email -->
+          <!-- Email -->
           <div class="flex flex-col">
             <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
             <input
               type="email"
               id="email"
               name="email"
+              [(ngModel)]="clientFormData.email"
               class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue"
               placeholder="Enter client email"
+              required
             />
           </div>
 
-          <!-- Client Phone Number -->
+          <!-- Phone Number -->
           <div class="flex flex-col">
             <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Phone Number</label>
             <input
               type="tel"
               id="phoneNumber"
               name="phoneNumber"
+              [(ngModel)]="clientFormData.phoneNumber"
               class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue"
               placeholder="Enter phone number"
             />
           </div>
 
-          <!-- Client Address -->
+          <!-- Address -->
           <div class="flex flex-col">
             <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
             <input
               type="text"
               id="address"
               name="address"
+              [(ngModel)]="clientFormData.address"
               class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue"
               placeholder="Enter client address"
             />
           </div>
         </div>
 
-        <!-- Buttons Section (Top) -->
-        <div class="mt-6 flex gap-4">
+        <!-- Action Buttons -->
+        <div class="mt-6 grid grid-cols-1 gap-4">
           <button
             type="submit"
-            class="rounded-lg bg-tertiary-light-blue px-6 py-3 text-sm font-semibold text-black transition transform hover:scale-105 hover:text-primary-blue shadow-md w-1/2">
+            (click)="saveClient()"
+            *ngIf="!isEditing"
+            class="w-full rounded-lg bg-tertiary-light-blue px-6 py-3 text-sm font-semibold text-black transition transform hover:scale-105 hover:text-primary-blue shadow-md">
             Save
           </button>
           <button
             type="button"
-            class="rounded-lg bg-tertiary-light-blue px-6 py-3 text-sm font-semibold text-black transition transform hover:scale-105 hover:text-primary-blue shadow-md w-1/2">
+            *ngIf="clientFormData.id"
+            (click)="editClient()"
+            class="rounded-lg bg-tertiary-light-blue px-6 py-3 text-sm font-semibold text-black transition transform hover:scale-105 hover:text-primary-blue shadow-md">
             Edit
+          </button>
+          <button
+            type="button"
+            (click)="deleteClient()"
+            *ngIf="clientFormData.id"
+            class="rounded-lg bg-tertiary-light-blue px-6 py-3 text-sm font-semibold text-black transition transform hover:scale-105 hover:text-primary-blue shadow-md">
+            Delete
+          </button>
+          <button
+            type="button"
+            (click)="resetForm()"
+            class="rounded-lg bg-gray-200 px-6 py-3 text-sm font-semibold text-black transition transform hover:scale-105 hover:text-gray-700 shadow-md">
+            Reset
           </button>
         </div>
       </form>
-
-      <!-- Buttons Section (Bottom) -->
-      <div class="mt-6 flex gap-4">
-        <button
-          type="button"
-          class="rounded-lg bg-tertiary-light-blue px-6 py-3 text-sm font-semibold text-black transition transform hover:scale-105 hover:text-primary-blue shadow-md w-1/2">
-          Search
-        </button>
-        <button
-          type="button"
-          class="rounded-lg bg-tertiary-light-blue px-6 py-3 text-sm font-semibold text-black transition transform hover:scale-105 hover:text-primary-blue shadow-md w-1/2">
-          Delete
-        </button>
-      </div>
     </div>
 
     <!-- Clients List Section -->
@@ -95,28 +107,38 @@
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-100">
             <tr>
-              <th class="px-6 py-3 text-left text-sm font-medium text-gray-900">Client Name</th>
+              <th class="px-6 py-3 text-left text-sm font-medium text-gray-900">Name</th>
               <th class="px-6 py-3 text-left text-sm font-medium text-gray-900">Email</th>
-              <th class="px-6 py-3 text-left text-sm font-medium text-gray-900">Phone Number</th>
+              <th class="px-6 py-3 text-left text-sm font-medium text-gray-900">Phone</th>
               <th class="px-6 py-3 text-left text-sm font-medium text-gray-900">Address</th>
               <th class="px-6 py-3 text-left text-sm font-medium text-gray-900">Actions</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-200">
-            <!-- Loop through clients here -->
-            <!-- <tr *ngFor="let client of clients">
+            <tr *ngFor="let client of clients">
               <td class="px-6 py-4 text-sm text-gray-900">{{ client.name }}</td>
               <td class="px-6 py-4 text-sm text-gray-900">{{ client.email }}</td>
               <td class="px-6 py-4 text-sm text-gray-900">{{ client.phoneNumber }}</td>
               <td class="px-6 py-4 text-sm text-gray-900">{{ client.address }}</td>
-              <td class="px-6 py-4 text-sm font-medium text-gray-900">
-                <button class="text-primary-blue hover:text-primary-dark">Edit</button>
-                <button class="text-red-500 hover:text-red-700 ml-4">Delete</button>
+              <td class="px-6 py-4 text-sm font-medium">
+                <button
+                  (click)="selectClient(client)"
+                  class="text-primary-blue hover:text-blue-700 mr-4">
+                  Edit
+                </button>
               </td>
-            </tr> -->
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
 </div>
+
+<app-modal
+  [isVisible]="showModal"
+  [title]="modalTitle"
+  [message]="modalMessage"
+  [confirmButtonText]="'OK'"
+  (onConfirm)="closeModal()">
+</app-modal>

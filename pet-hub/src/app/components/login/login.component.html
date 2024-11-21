@@ -28,10 +28,14 @@
             Sign in
           </button>
         </div>
-        <div *ngIf="errorMessage" class="mt-5 text-red-400 text-sm text-center">
-          {{ errorMessage }}
-        </div>
       </form>
     </div>
   </div>
 </section>
+<app-modal
+  [isVisible]="showModal"
+  [title]="modalTitle"
+  [message]="modalMessage"
+  [confirmButtonText]="confirmButtonText"
+  (onConfirm)="closeModal()">
+</app-modal>

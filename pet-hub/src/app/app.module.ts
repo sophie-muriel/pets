@@ -15,6 +15,7 @@ import { ServicesComponent } from './components/services/services.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ClientsComponent } from './components/account/clients/clients.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ContactComponent,
     ClientsComponent,
     PageNotFoundComponent,
+    ModalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
