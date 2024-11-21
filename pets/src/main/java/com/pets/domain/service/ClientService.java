@@ -39,14 +39,14 @@ public class ClientService {
         }
     }
 
-    public ClientDTO editClient(int clientId, ClientDTO updatedClient) {
-        Optional<ClientDTO> existingClientOptional = clientRepository.getClientById(clientId);
-        if (existingClientOptional.isEmpty()) {
-            throw new IllegalArgumentException("Client not found");
-        }
-        ClientDTO existingClient = existingClientOptional.get();
+    public ClientDTO editClient(Integer clientId, ClientDTO updatedClient) {
 
-        if (updatedClient.getName() != null && !updatedClient.getName().equals(existingClient.getName())) {
+        System.out.println("Received clientDTO: " + updatedClient);
+
+        ClientDTO existingClient = getClientById(clientId)
+                .orElseThrow(() -> new IllegalArgumentException("Client not found"));
+
+        if (updatedClient.getName() != null) {
             existingClient.setName(updatedClient.getName());
         }
         if (updatedClient.getEmail() != null) {

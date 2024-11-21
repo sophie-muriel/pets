@@ -5,25 +5,34 @@ import jakarta.validation.constraints.*;
 public class UserDTO {
     private Integer id;
 
-    @NotBlank @Size(max = 50)
+    @NotBlank
+    @Size(max = 50)
     private String login;
 
-    @NotBlank @Size(max = 50)
+    @NotBlank
+    @Size(max = 50)
     private String password;
 
-    @NotBlank @Size(max = 100) @Pattern(regexp = "^[a-zA-Z\\s]+$")
+    @NotBlank
+    @Size(max = 100)
+    @Pattern(regexp = "^[a-zA-Z\\s]+$")
     private String name;
 
-    @NotBlank @Email @Size(max = 100)
+    @NotBlank
+    @Email
+    @Size(max = 100)
     private String email;
 
-    @Size(max = 10) @Pattern(regexp = "^[0-9]*$")
+    @Size(max = 10)
+    @Pattern(regexp = "^[0-9]*$")
     private String phoneNumber;
 
-    @NotBlank @Pattern(regexp = "^(Employee|Admin|Stylist)$", message = "Employee, Admin, or Stylist only")
+    @NotBlank
+    @Pattern(regexp = "^(Employee|Admin|Stylist)$", message = "Employee, Admin, or Stylist only")
     private String role;
 
-    public UserDTO(Integer id, String login, String password, String name, String email, String phoneNumber, String role) {
+    public UserDTO(Integer id, String login, String password, String name, String email, String phoneNumber,
+            String role) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -36,6 +45,7 @@ public class UserDTO {
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -43,6 +53,7 @@ public class UserDTO {
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -50,6 +61,7 @@ public class UserDTO {
     public String getLogin() {
         return login;
     }
+
     public void setLogin(String login) {
         this.login = login;
     }
@@ -57,6 +69,7 @@ public class UserDTO {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -64,6 +77,7 @@ public class UserDTO {
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -71,6 +85,7 @@ public class UserDTO {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
@@ -78,6 +93,7 @@ public class UserDTO {
     public String getRole() {
         return role;
     }
+
     public void setRole(String role) {
         this.role = role;
     }

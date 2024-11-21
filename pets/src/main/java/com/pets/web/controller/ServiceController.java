@@ -2,6 +2,12 @@ package com.pets.web.controller;
 
 import com.pets.domain.dto.ServiceDTO;
 import com.pets.domain.service.ServiceService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +26,12 @@ public class ServiceController {
     @Autowired
     private ServiceService serviceService;
 
+    @Operation(summary = "Get all services", description = "Returns a list of services.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Services found", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) }),
+            @ApiResponse(responseCode = "204", description = "Services not found", content = @Content)
+    })
     @GetMapping("/all")
     public ResponseEntity<Map<String, Object>> getAll() {
         List<ServiceDTO> services = serviceService.getAllServices();
@@ -36,6 +48,12 @@ public class ServiceController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @Operation(summary = "Gets a service", description = "Returns a specific service.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Service found", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) }),
+            @ApiResponse(responseCode = "404", description = "Service not found", content = @Content)
+    })
     @GetMapping("/{id}")
     public ResponseEntity<Map<String, Object>> getService(@PathVariable("id") int serviceId) {
         Map<String, Object> response = new HashMap<>();
@@ -52,6 +70,11 @@ public class ServiceController {
         }
     }
 
+    @Operation(summary = "Saves a service", description = "Adds a service to the list.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Service saved", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) })
+    })
     @PostMapping("/save")
     public ResponseEntity<Map<String, Object>> save(@Valid @RequestBody ServiceDTO serviceDTO) {
         Map<String, Object> response = new HashMap<>();
@@ -63,6 +86,12 @@ public class ServiceController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Edits a service", description = "Edits a service in the list.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Service updated", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) }),
+            @ApiResponse(responseCode = "404", description = "Service not updated", content = @Content)
+    })
     @PutMapping("/edit/{id}")
     public ResponseEntity<Map<String, Object>> edit(@PathVariable("id") int serviceId,
             @Valid @RequestBody ServiceDTO serviceDTO) {
@@ -84,6 +113,12 @@ public class ServiceController {
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
+    @Operation(summary = "Deletes a service", description = "Removes a service from the list.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Service removed", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) }),
+            @ApiResponse(responseCode = "404", description = "Service not removed", content = @Content)
+    })
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Map<String, Object>> delete(@PathVariable("id") int serviceId) {
         Map<String, Object> response = new HashMap<>();

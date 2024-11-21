@@ -5,7 +5,8 @@ import jakarta.validation.constraints.*;
 public class CategoryDTO {
     private Integer id;
 
-    @NotBlank @Size(max = 100)
+    @NotBlank
+    @Size(max = 100)
     private String category;
 
     public CategoryDTO(String category, Integer id) {

@@ -7,6 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +25,12 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    @Operation(summary = "Get all categories", description = "Returns a list of categories.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Categories found", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) }),
+            @ApiResponse(responseCode = "204", description = "Categories not found", content = @Content)
+    })
     @GetMapping("/all")
     public ResponseEntity<Map<String, Object>> getAll() {
         List<CategoryDTO> categories = categoryService.getAllCategories();
@@ -36,6 +47,12 @@ public class CategoryController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @Operation(summary = "Gets a category", description = "Returns a specific category.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Category found", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) }),
+            @ApiResponse(responseCode = "404", description = "Category not found", content = @Content)
+    })
     @GetMapping("/{id}")
     public ResponseEntity<Map<String, Object>> getCategory(@PathVariable("id") int categoryId) {
         Map<String, Object> response = new HashMap<>();
@@ -52,6 +69,11 @@ public class CategoryController {
         }
     }
 
+    @Operation(summary = "Saves a category", description = "Adds a category to the list.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Category saved", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) })
+    })
     @PostMapping("/save")
     public ResponseEntity<Map<String, Object>> save(@Valid @RequestBody CategoryDTO categoryDTO) {
         Map<String, Object> response = new HashMap<>();
@@ -63,6 +85,12 @@ public class CategoryController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Edits a category", description = "Edits a category in the list.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Category updated", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) }),
+            @ApiResponse(responseCode = "404", description = "Category not updated", content = @Content)
+    })
     @PutMapping("/edit/{id}")
     public ResponseEntity<Map<String, Object>> edit(@PathVariable("id") int categoryId,
             @Valid @RequestBody CategoryDTO categoryDTO) {
@@ -84,6 +112,12 @@ public class CategoryController {
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
+    @Operation(summary = "Deletes a category", description = "Removes a category from the list.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Category removed", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) }),
+            @ApiResponse(responseCode = "404", description = "Category not removed", content = @Content)
+    })
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Map<String, Object>> delete(@PathVariable("id") int categoryId) {
         Map<String, Object> response = new HashMap<>();
@@ -92,7 +126,7 @@ public class CategoryController {
         if (deleted) {
             response.put("status", "success");
             response.put("message", "Category deleted successfully");
-            return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(response, HttpStatus.OK);
         }
 
         response.put("status", "error");

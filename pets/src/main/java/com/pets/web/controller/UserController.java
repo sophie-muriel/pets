@@ -3,6 +3,12 @@ package com.pets.web.controller;
 import com.pets.domain.dto.LoginRequestDTO;
 import com.pets.domain.dto.UserDTO;
 import com.pets.domain.service.UserService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +27,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Operation(summary = "Get all users", description = "Returns a list of users.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Users found", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) }),
+            @ApiResponse(responseCode = "204", description = "Users not found", content = @Content)
+    })
     @GetMapping("/all")
     public ResponseEntity<Map<String, Object>> getAll() {
         List<UserDTO> users = userService.getAllUsers();
@@ -37,6 +49,12 @@ public class UserController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @Operation(summary = "Gets a user", description = "Returns a specific user.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User found", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) }),
+            @ApiResponse(responseCode = "404", description = "User not found", content = @Content)
+    })
     @GetMapping("/{id}")
     public ResponseEntity<Map<String, Object>> getUser(@PathVariable("id") int userId) {
         Map<String, Object> response = new HashMap<>();
@@ -53,6 +71,11 @@ public class UserController {
         }
     }
 
+    @Operation(summary = "Saves a user", description = "Adds a user to the list.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "User saved", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) })
+    })
     @PostMapping("/save")
     public ResponseEntity<Map<String, Object>> save(@Valid @RequestBody UserDTO userDTO) {
         Map<String, Object> response = new HashMap<>();
@@ -64,6 +87,12 @@ public class UserController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Logs a user in", description = "Lets a user login with the correct username and password.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User logged in", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) }),
+            @ApiResponse(responseCode = "401", description = "User not authorized", content = @Content)
+    })
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(@RequestBody LoginRequestDTO loginRequest) {
         Map<String, Object> response = new HashMap<>();
@@ -80,6 +109,12 @@ public class UserController {
         }
     }
 
+    @Operation(summary = "Edits a user", description = "Edits a user in the list.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User updated", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) }),
+            @ApiResponse(responseCode = "404", description = "User not updated", content = @Content)
+    })
     @PutMapping("/edit/{id}")
     public ResponseEntity<Map<String, Object>> edit(@PathVariable("id") int userId,
             @Valid @RequestBody UserDTO userDTO) {
@@ -101,6 +136,12 @@ public class UserController {
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
+    @Operation(summary = "Deletes a user", description = "Removes a user from the list.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User removed", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) }),
+            @ApiResponse(responseCode = "404", description = "User not removed", content = @Content)
+    })
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Map<String, Object>> delete(@PathVariable("id") int userId) {
         Map<String, Object> response = new HashMap<>();

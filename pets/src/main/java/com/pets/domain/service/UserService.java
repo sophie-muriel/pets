@@ -53,19 +53,21 @@ public class UserService {
         }
     }
 
-    public UserDTO editUser(int userId, UserDTO updatedUser) {
-        Optional<UserDTO> existingUserOptional = userRepository.getUserById(userId);
-        if (existingUserOptional.isEmpty()) {
-            throw new IllegalArgumentException("User not found");
-        }
-        UserDTO existingUser = existingUserOptional.get();
+    public UserDTO editUser(Integer userId, UserDTO updatedUser) {
+        // First, get the existing user
+        UserDTO existingUser = getUserById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        if (updatedUser.getLogin() != null && !updatedUser.getLogin().equals(existingUser.getLogin())) {
+        if (updatedUser.getLogin() != null &&
+                !updatedUser.getLogin().equals(existingUser.getLogin())) {
+
+            Optional<UserDTO> existingUserWithLogin = userRepository.findByLogin(updatedUser.getLogin());
+            if (existingUserWithLogin.isPresent()) {
+                throw new IllegalArgumentException("Login is already in use");
+            }
             existingUser.setLogin(updatedUser.getLogin());
         }
-        if (updatedUser.getPassword() != null) {
-            existingUser.setPassword(updatedUser.getPassword());
-        }
+
         if (updatedUser.getName() != null) {
             existingUser.setName(updatedUser.getName());
         }
@@ -77,6 +79,10 @@ public class UserService {
         }
         if (updatedUser.getRole() != null) {
             existingUser.setRole(updatedUser.getRole());
+        }
+
+        if (updatedUser.getPassword() != null) {
+            existingUser.setPassword(updatedUser.getPassword());
         }
 
         return userRepository.saveUser(existingUser);
